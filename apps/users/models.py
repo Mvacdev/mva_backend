@@ -44,21 +44,21 @@ class User(AbstractBaseUser, PermissionsMixin):
     #     discard, ext = os.path.splitext(instance)
     #     return f'users/{self.id}/profile_pictures/{"".join([basename, ext])}'
 
-    username = models.CharField(max_length=defs.NAME_LENGTH, null=True, blank=True, verbose_name='Имя пользователя')
+    username = models.CharField(max_length=defs.NAME_LENGTH, null=True, blank=True, verbose_name='Username')
     # profile_picture = models.ImageField(upload_to=get_upload_picture, default=None, verbose_name='Фото профиля', null=True, blank=True)
 
-    email = models.EmailField(max_length=defs.NAME_LENGTH, unique=True, verbose_name='Електронная почта')
-    email_verified = models.BooleanField(default=False, verbose_name='Почта подтверждена')
+    email = models.EmailField(max_length=defs.NAME_LENGTH, unique=True, verbose_name='Email')
+    email_verified = models.BooleanField(default=False, verbose_name='Email confirmed')
 
-    groups = models.ManyToManyField(to=Group, blank=True, verbose_name='Группы')
+    groups = models.ManyToManyField(to=Group, blank=True, verbose_name='Groups')
 
-    is_active = models.BooleanField(default=True, verbose_name='Активен')
-    is_staff = models.BooleanField(default=False, verbose_name='Персонал')
-    is_superuser = models.BooleanField(default=False, verbose_name='Суперпользователь')
+    is_active = models.BooleanField(default=True, verbose_name='Active')
+    is_staff = models.BooleanField(default=False, verbose_name='Stuff')
+    is_superuser = models.BooleanField(default=False, verbose_name='Superuser')
 
-    date_joined = models.DateTimeField(default=timezone.now, verbose_name='Дата присоединения')
+    date_joined = models.DateTimeField(default=timezone.now, verbose_name='Date joined')
 
-    updated_at = models.DateTimeField(default=timezone.now, verbose_name='Обновлён')
+    updated_at = models.DateTimeField(default=timezone.now, verbose_name='Updated at')
 
     objects = UserManager()
 
@@ -88,6 +88,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         return super().save(*args, **kwargs)
 
     class Meta:
-        verbose_name = 'Пользователь'
-        verbose_name_plural = 'Пользователи'
+        verbose_name = 'User'
+        verbose_name_plural = 'Users'
 

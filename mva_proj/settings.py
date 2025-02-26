@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'apps.api',
     'apps.core',
     'apps.users',
+    'apps.integration',
 
     # Custom
     'debug_toolbar',
@@ -100,6 +101,13 @@ ADMIN_REORDER = (
      'models': (
          'core.DataHistory',
          # 'core.Product',
+     )},
+
+    # integration
+    {'app': 'integration',
+     'label': 'integration',
+     'models': (
+        'integration.MainPage',
      )},
 
     {'app': 'extra_settings',

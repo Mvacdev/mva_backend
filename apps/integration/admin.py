@@ -100,15 +100,24 @@ class FranchisesAdmin(admin.ModelAdmin):
 #         model = Article
 #         fields = "__all__"
 
+class ArticleInline(admin.TabularInline):
+    # form = ArticleAdminForm
+    model = Article
+    fields = ("title", "description", "main_img", "text", "read_time", "author", "pub_date", "tags")
+    extra = 0
+
+
 
 @admin.register(BlogPage)
 class BlogPageAdmin(admin.ModelAdmin):
     list_display = ("id", "seo_title", "seo_description")
+    list_display_links = ["id", "seo_title"]
     search_fields = ("seo_title", "seo_description")
     fieldsets = (
         ("SEO", {"fields": ("seo_title", "seo_description")}),
         ("Blocks", {"fields": ("title_desc_block", "youtube_feed_section", "review_section", "footer", "why_chose_us_section")}),
     )
+    inlines = [ArticleInline]
 
 
 @admin.register(Article)

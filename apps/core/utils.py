@@ -1,10 +1,22 @@
 import requests
-
+import math
 from environs import Env
 
 
 env = Env()
 env.read_env()
+
+
+def get_min_read_time(text: str, wpm: int = 150) -> int:
+    """
+    Calculate the estimated minimum reading time of an article.
+
+    :param text: The article text.
+    :param wpm: Words per minute reading speed (default is 200).
+    :return: Minimum reading time in minutes (rounded up).
+    """
+    word_count = len(text.split())
+    return math.ceil(word_count / wpm)
 
 
 def send_tg_message(message, chat_id=None):

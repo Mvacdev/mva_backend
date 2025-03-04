@@ -1,18 +1,20 @@
 from django.contrib import admin
 from nested_admin.nested import NestedTabularInline, NestedModelAdmin
 
-from .models import (
+from apps.integration.models import (
     Button, MainScreenFeatureBlock, MainScreenFeature, MainSelect, MainSelectOption, CardSection, Card,
     PricingSection, PricingPlan, PricingFeature, BannerSection, CalculatorSection, ReviewSection,
     ReviewCard, YouTubeFeedSection, YouTubeVideo, FAQSection, FAQItem, PartnerSection, Partner,
-    TitreSection, Footer, SocialLink, FooterNote, MainPage
+    TitreSection, Footer, SocialLink, FooterNote, MainPage, ContactPage, EstimationPage, Franchises,
+    TitleDescriptionBlock, ImageBlock, BlogPage, Article, Tag
 )
 
 
 @admin.register(MainPage)
 class MainPageAdmin(admin.ModelAdmin):
-    list_display_links = ['id', 'title']
-    list_display = ('id', 'title', 'background_image', 'rating', 'video_url')
+    list_display_links = ['id', 'seo_title']
+    # list_display = ('id', 'title', 'background_image', 'rating', 'video_url')
+    list_display = ('id', 'seo_title', 'seo_description')
     # raw_id_fields = ['main_screen_feature_block']
 
     fieldsets = (
@@ -31,6 +33,111 @@ class MainPageAdmin(admin.ModelAdmin):
             'footer',
         )}),
     )
+
+
+# -------------
+
+@admin.register(ContactPage)
+class ContactPageAdmin(admin.ModelAdmin):
+    list_display_links = ['id', 'seo_title']
+    list_display = ('id', 'seo_title', 'seo_description')
+
+    fieldsets = (
+        ('MetaInfo', {'fields': (
+            'seo_title', 'seo_description',
+        )}),
+        ('Blocks', {'fields': (
+            'title_desc_block', 'image_block', 'faq_section',
+        )}),
+        ('Footer', {'fields': (
+            'footer',
+        )}),
+    )
+
+
+@admin.register(EstimationPage)
+class EstimationPageAdmin(admin.ModelAdmin):
+    list_display_links = ['id', 'seo_title']
+    list_display = ('id', 'seo_title', 'seo_description')
+
+    fieldsets = (
+        ('MetaInfo', {'fields': (
+            'seo_title', 'seo_description',
+        )}),
+        ('Blocks', {'fields': (
+            'title_desc_block', 'image_block', 'faq_section',
+        )}),
+        ('Footer', {'fields': (
+            'footer',
+        )}),
+    )
+
+
+@admin.register(Franchises)
+class FranchisesAdmin(admin.ModelAdmin):
+    list_display_links = ['id', 'seo_title']
+    list_display = ('id', 'seo_title', 'seo_description')
+
+    fieldsets = (
+        ('MetaInfo', {'fields': (
+            'seo_title', 'seo_description',
+        )}),
+        ('Blocks', {'fields': (
+            'title_desc_block', 'image_block', 'faq_section', 'why_need_franchise', 'banner'
+        )}),
+        ('Footer', {'fields': (
+            'footer',
+        )}),
+    )
+
+
+# -------------
+
+# class ArticleAdminForm(forms.ModelForm):
+#     text = forms.CharField(widget=TrixEditor(), required=False)
+#
+#     class Meta:
+#         model = Article
+#         fields = "__all__"
+
+
+@admin.register(BlogPage)
+class BlogPageAdmin(admin.ModelAdmin):
+    list_display = ("id", "seo_title", "seo_description")
+    search_fields = ("seo_title", "seo_description")
+    fieldsets = (
+        ("SEO", {"fields": ("seo_title", "seo_description")}),
+        ("Blocks", {"fields": ("title_desc_block", "youtube_feed_section", "review_section", "footer", "why_chose_us_section")}),
+    )
+
+
+@admin.register(Article)
+class ArticleAdmin(admin.ModelAdmin):
+    # form = ArticleAdminForm
+    list_display = ("title", "author", "pub_date", "read_time", "blog")
+    search_fields = ("title", "author", "tags__name")
+    list_filter = ("blog", "pub_date", "tags")
+    filter_horizontal = ("tags",)
+    ordering = ("-pub_date",)
+
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+    search_fields = ("name",)
+    ordering = ("name",)
+
+
+# -------------
+
+@admin.register(TitleDescriptionBlock)
+class TitleDescriptionBlockAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'description')
+
+
+@admin.register(ImageBlock)
+class ImageBlockAdmin(admin.ModelAdmin):
+    list_display = ('id', 'image')
 
 
 @admin.register(Button)

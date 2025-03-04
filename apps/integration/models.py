@@ -1,6 +1,22 @@
+import re
+
+from bs4 import BeautifulSoup
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.core.exceptions import ValidationError
+from django.utils import timezone
+from trix_editor.fields import TrixEditorField
+
+from apps.core.utils import get_min_read_time
+
+
+class TitleDescriptionBlock(models.Model):
+    title = models.CharField(max_length=255, help_text='Page title')
+    description = models.TextField(help_text='Page description')
+
+
+class ImageBlock(models.Model):
+    image = models.ImageField(upload_to='images/', help_text='Single image')
 
 
 class Button(models.Model):
@@ -150,6 +166,8 @@ class Footer(models.Model):
     address = models.CharField(max_length=255, help_text='Address')
     email = models.EmailField(help_text='Email')
     phone = models.CharField(max_length=20, help_text='Phone number')
+    phone_help_text = models.CharField(max_length=100, blank=True, help_text='(Lundy au bended, 9h-18h)')
+    contacts_title = models.CharField(max_length=100, blank=True, help_text='Pour un contact rapide, voici nos informations :')
 
 
 class SocialLink(models.Model):
@@ -168,6 +186,13 @@ class FooterNote(models.Model):
     text = models.CharField(max_length=255, help_text='Footer note text')
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=100, unique=True, help_text='Unique tag name')
+
+    def __str__(self):
+        return self.name
+
+
 class MainPage(models.Model):
     # ---- MetaInfo -----
     seo_title = models.CharField(max_length=100, help_text='SEO Title', blank=True)
@@ -184,7 +209,7 @@ class MainPage(models.Model):
     video_url = models.URLField(help_text='Video URL', blank=True)
     video_text = models.CharField(max_length=255, help_text='Video text', blank=True)
     video_preview = models.ImageField(upload_to='main_page/video_previews/', help_text='Video preview img', blank=True, null=True)
-    # BLOCKS
+    # ***** BLOCKS ******
     main_screen_feature_block = models.OneToOneField(MainScreenFeatureBlock, on_delete=models.SET_NULL, blank=True, null=True)
     main_screen_select = models.OneToOneField(MainSelect, on_delete=models.SET_NULL, blank=True, null=True)
     # ---- MarketingSection ----- OK
@@ -216,3 +241,90 @@ class MainPage(models.Model):
     #  ---- Footer -----
     footer = models.OneToOneField(Footer, on_delete=models.SET_NULL, blank=True, null=True)
 
+
+class InfoPage(models.Model):
+    # ---- MetaInfo -----
+    seo_title = models.CharField(max_length=100, help_text='SEO Title', blank=True)
+    seo_description = models.CharField(max_length=500, help_text='SEO Description', blank=True)
+    # ***** BLOCKS ******
+    title_desc_block = models.OneToOneField(TitleDescriptionBlock, on_delete=models.SET_NULL, blank=True, null=True)
+    image_block = models.OneToOneField(ImageBlock, on_delete=models.SET_NULL, blank=True, null=True)
+    # ---- FAQSection -----
+    faq_section = models.OneToOneField(FAQSection, on_delete=models.SET_NULL, blank=True, null=True)
+    #  ---- Footer -----
+    footer = models.OneToOneField(Footer, on_delete=models.SET_NULL, blank=True, null=True)
+
+    class Meta:
+        abstract = True
+
+
+class ContactPage(InfoPage):
+    pass
+
+
+class EstimationPage(InfoPage):
+    pass
+
+
+class Franchises(InfoPage):
+    why_need_franchise = models.OneToOneField(CardSection, on_delete=models.SET_NULL, blank=True, null=True)
+    banner = models.OneToOneField(BannerSection, on_delete=models.SET_NULL, blank=True, null=True)
+
+
+class BlogPage(models.Model):
+    # ---- MetaInfo -----
+    seo_title = models.CharField(max_length=100, help_text='SEO Title', blank=True)
+    seo_description = models.CharField(max_length=500, help_text='SEO Description', blank=True)
+    # ---- General
+    title_desc_block = models.OneToOneField(TitleDescriptionBlock, on_delete=models.SET_NULL, blank=True, null=True)
+    # ---- YouTubeFeedSection -----
+    youtube_feed_section = models.OneToOneField(YouTubeFeedSection, on_delete=models.SET_NULL, blank=True, null=True)
+    # ---- ReviewSection -----
+    review_section = models.OneToOneField(ReviewSection, on_delete=models.SET_NULL, blank=True, null=True)
+    #  ---- Footer -----
+    footer = models.OneToOneField(Footer, on_delete=models.SET_NULL, blank=True, null=True)
+    # TODO: Put into Article page ------------
+    # ---- Why Chose Us -----
+    why_chose_us_section = models.OneToOneField(CardSection, on_delete=models.SET_NULL, blank=True, null=True)
+
+
+class Article(models.Model):
+    blog = models.ForeignKey(BlogPage, on_delete=models.CASCADE, related_name="articles")
+    # ---- MetaInfo -----
+    # seo_title = models.CharField(max_length=100, help_text='SEO Title', blank=True)
+    # seo_description = models.CharField(max_length=500, help_text='SEO Description', blank=True)
+    # ---- General
+    title = models.CharField(max_length=100, help_text='Article title')
+    description = models.TextField(max_length=1000, blank=True)
+    main_img = models.ImageField(upload_to='blog/images/', help_text='Article main image')
+    text = TrixEditorField(max_length=5000, help_text='Article text', blank=True)
+    read_time = models.PositiveSmallIntegerField(default=0, help_text='Article read time in minutes')
+    author = models.CharField(max_length=50, help_text='The author of the article')
+    pub_date = models.DateTimeField(default=timezone.now, help_text='Publication date')
+    tags = models.ManyToManyField(Tag, related_name="articles", blank=True)
+    plan = models.JSONField(default=list, blank=True, help_text='Article plan')
+
+    def extract_plan_and_update_text(self):
+        """Finds h2 headings, creates anchors and updates article text."""
+        soup = BeautifulSoup(self.text, "html.parser")
+        plan = []
+
+        for h1 in soup.find_all("h1"):
+            title = h1.get_text(strip=True)
+            anchor = re.sub(r'[^a-zA-Z0-9]+', '-', title.lower()).strip('-')
+            h1["id"] = anchor
+            plan.append({"title": title, "anchor": f"#{anchor}"})
+
+        return plan, str(soup)
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        self.read_time = get_min_read_time(self.text)
+        self.plan, self.text = self.extract_plan_and_update_text()
+        # if not self.seo_title:
+        #     self.seo_title = self.title
+        # if not self.seo_description:
+        #     self.seo_description = self.description
+        super().save(*args, **kwargs)

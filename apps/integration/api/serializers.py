@@ -6,7 +6,8 @@ from apps.integration.models import (
     CardSection, Card, PricingSection, PricingPlan, PricingFeature, BannerSection,
     CalculatorSection, ReviewSection, ReviewCard, YouTubeFeedSection, YouTubeVideo,
     FAQSection, FAQItem, PartnerSection, Partner, TitreSection, Footer, SocialLink,
-    FooterNote
+    FooterNote, Button, ContactPage, EstimationPage, Franchises, TitleDescriptionBlock, ImageBlock, Tag, Article,
+    BlogPage
 )
 
 # class MainPageSerializer(serializers.ModelSerializer):
@@ -30,7 +31,14 @@ class MainScreenFeatureBlockSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class ButtonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Button
+        fields = '__all__'
+
+
 class MainSelectOptionSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = MainSelectOption
         fields = '__all__'
@@ -38,6 +46,7 @@ class MainSelectOptionSerializer(serializers.ModelSerializer):
 
 class MainSelectSerializer(serializers.ModelSerializer):
     options = MainSelectOptionSerializer(many=True)
+    button = ButtonSerializer()
 
     class Meta:
         model = MainSelect
@@ -74,6 +83,7 @@ class PricingPlanSerializer(serializers.ModelSerializer):
 
 class PricingSectionSerializer(serializers.ModelSerializer):
     plans = PricingPlanSerializer(many=True)
+    button = ButtonSerializer()
 
     class Meta:
         model = PricingSection
@@ -81,6 +91,8 @@ class PricingSectionSerializer(serializers.ModelSerializer):
 
 
 class BannerSectionSerializer(serializers.ModelSerializer):
+    button = ButtonSerializer()
+
     class Meta:
         model = BannerSection
         fields = '__all__'
@@ -100,6 +112,7 @@ class ReviewCardSerializer(serializers.ModelSerializer):
 
 class ReviewSectionSerializer(serializers.ModelSerializer):
     review_cards = ReviewCardSerializer(many=True)
+    button = ButtonSerializer()
 
     class Meta:
         model = ReviewSection
@@ -175,6 +188,18 @@ class FooterSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class TitleDescriptionBlockSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TitleDescriptionBlock
+        fields = '__all__'
+
+
+class ImageBlockSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ImageBlock
+        fields = '__all__'
+
+
 class MainPageSerializer(serializers.ModelSerializer):
     main_screen_feature_block = MainScreenFeatureBlockSerializer()
     main_screen_select = MainSelectSerializer()
@@ -196,3 +221,70 @@ class MainPageSerializer(serializers.ModelSerializer):
     class Meta:
         model = MainPage
         fields = '__all__'
+
+
+class ContactPageSerializer(serializers.ModelSerializer):
+    title_desc_block = TitleDescriptionBlockSerializer()
+    image_block = ImageBlockSerializer()
+    faq_section = FAQSectionSerializer()
+    footer = FooterSerializer()
+
+    class Meta:
+        model = ContactPage
+        fields = '__all__'
+
+
+class EstimationPageSerializer(serializers.ModelSerializer):
+    title_desc_block = TitleDescriptionBlockSerializer()
+    image_block = ImageBlockSerializer()
+    faq_section = FAQSectionSerializer()
+    footer = FooterSerializer()
+
+    class Meta:
+        model = EstimationPage
+        fields = '__all__'
+
+
+class FranchisesSerializer(serializers.ModelSerializer):
+    title_desc_block = TitleDescriptionBlockSerializer()
+    why_need_franchise = CardSectionSerializer()
+    image_block = ImageBlockSerializer()
+    faq_section = FAQSectionSerializer()
+    banner = BannerSectionSerializer()
+    footer = FooterSerializer()
+
+    class Meta:
+        model = Franchises
+        fields = '__all__'
+
+
+class ArticleSerializer(serializers.ModelSerializer):
+    tags = serializers.SlugRelatedField(
+        many=True,
+        slug_field='name',
+        queryset=Tag.objects.all()
+    )
+
+    class Meta:
+        model = Article
+        fields = ['id', 'title', 'description', 'main_img', 'text', 'read_time', 'author', 'pub_date', 'tags', 'plan']
+
+
+class BlogPageSerializer(serializers.ModelSerializer):
+    articles = ArticleSerializer(read_only=True, many=True)
+    title_desc_block = TitleDescriptionBlockSerializer()
+    youtube_feed_section = YouTubeFeedSectionSerializer()
+    review_section = ReviewSectionSerializer()
+    footer = FooterSerializer()
+    all_tags = serializers.SerializerMethodField()
+    why_chose_us_section = CardSectionSerializer()
+
+    class Meta:
+        model = BlogPage
+        fields = [
+            'id', 'seo_title', 'seo_description', 'title_desc_block', 'youtube_feed_section', 'review_section', 'footer',
+            'all_tags', 'why_chose_us_section', 'articles'
+        ]
+
+    def get_all_tags(self, obj):
+        return Tag.objects.values_list('name', flat=True)

@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'nested_admin',
     'mptt',
+    'trix_editor',
     # 'sslserver',
     'corsheaders',
     'admin_reorder',
@@ -108,6 +109,11 @@ ADMIN_REORDER = (
      'label': 'integration',
      'models': (
         'integration.MainPage',
+        'integration.ContactPage',
+        'integration.EstimationPage',
+        'integration.Franchises',
+        'integration.Article',
+        'integration.BlogPage',
      )},
 
     {'app': 'extra_settings',
@@ -276,6 +282,7 @@ CORS_ORIGIN_ALLOW_ALL = False  # Allowing all origins is not recommended for pro
 
 CORS_ORIGIN_WHITELIST = [
     'http://127.0.0.1:3000',
+    'http://192.168.0.107:3000',
     'http://localhost:3000',
     'http://206.81.17.158:3000',
     # Add more allowed origins as needed

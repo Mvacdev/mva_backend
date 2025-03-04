@@ -1,0 +1,1191 @@
+[
+{
+    "model": "integration.titledescriptionblock",
+    "pk": 1,
+    "fields": {
+        "title": "Nous sommes là pour vous aider à chaque étape !",
+        "description": "Que vous ayez une question, un besoin d’assistance ou une demande particulière, notre équipe est à votre écoute."
+    }
+},
+{
+    "model": "integration.titledescriptionblock",
+    "pk": 2,
+    "fields": {
+        "title": "Obtenez une estimation en 2 minutes chrono !",
+        "description": "Participez à notre succès et bénéficiez d’un accompagnement sur mesure pour développer votre propre activité."
+    }
+},
+{
+    "model": "integration.titledescriptionblock",
+    "pk": 3,
+    "fields": {
+        "title": "Rejoignez notre réseau de franchises",
+        "description": "Participez à notre succès et bénéficiez d’un accompagnement sur mesure pour développer votre propre activité."
+    }
+},
+{
+    "model": "integration.titledescriptionblock",
+    "pk": 4,
+    "fields": {
+        "title": "Tout savoir sur l’automobile : Conseils, actualités et tendances",
+        "description": "Explorez notre sélection d’articles rédigés par des experts pour vous accompagner dans l’achat, la vente, et l’entretien de votre véhicule"
+    }
+},
+{
+    "model": "integration.imageblock",
+    "pk": 1,
+    "fields": {
+        "image": "images/contact.png"
+    }
+},
+{
+    "model": "integration.imageblock",
+    "pk": 2,
+    "fields": {
+        "image": "images/estimation-bg.png"
+    }
+},
+{
+    "model": "integration.imageblock",
+    "pk": 3,
+    "fields": {
+        "image": "images/tell.png"
+    }
+},
+{
+    "model": "integration.button",
+    "pk": 1,
+    "fields": {
+        "text": "ESTIMER MEINTEINANT",
+        "url": "http://206.81.17.158/estimation.html"
+    }
+},
+{
+    "model": "integration.button",
+    "pk": 2,
+    "fields": {
+        "text": "CONTACTER UN CONSEILLER",
+        "url": "http://206.81.17.158/contact.html"
+    }
+},
+{
+    "model": "integration.button",
+    "pk": 3,
+    "fields": {
+        "text": "Prendre rdv",
+        "url": "http://206.81.17.158/contact.html"
+    }
+},
+{
+    "model": "integration.button",
+    "pk": 4,
+    "fields": {
+        "text": "Contacter un conseiller",
+        "url": "http://206.81.17.158/contact.html"
+    }
+},
+{
+    "model": "integration.button",
+    "pk": 5,
+    "fields": {
+        "text": "Contacter un conseiller",
+        "url": "http://206.81.17.158/contact.html"
+    }
+},
+{
+    "model": "integration.mainscreenfeatureblock",
+    "pk": 1,
+    "fields": {}
+},
+{
+    "model": "integration.mainscreenfeature",
+    "pk": 1,
+    "fields": {
+        "block": 1,
+        "icon": "main_page/icons/bullet1.png",
+        "text": "1Livraison dans toute la France"
+    }
+},
+{
+    "model": "integration.mainscreenfeature",
+    "pk": 2,
+    "fields": {
+        "block": 1,
+        "icon": "main_page/icons/bullet1_Zq17Xi4.png",
+        "text": "Large choix de véhicules contrôlés"
+    }
+},
+{
+    "model": "integration.mainscreenfeature",
+    "pk": 3,
+    "fields": {
+        "block": 1,
+        "icon": "main_page/icons/bullet1_jqWPQnx.png",
+        "text": "Estimation en 2 minutes et sans engagement"
+    }
+},
+{
+    "model": "integration.mainscreenfeature",
+    "pk": 4,
+    "fields": {
+        "block": 1,
+        "icon": "main_page/icons/bullet1_99TCrvV.png",
+        "text": "Service simple et rapide"
+    }
+},
+{
+    "model": "integration.mainscreenfeature",
+    "pk": 5,
+    "fields": {
+        "block": 1,
+        "icon": "main_page/icons/bullet1_Xvje6UT.png",
+        "text": "100% gratuit pour les vendeurs"
+    }
+},
+{
+    "model": "integration.mainselect",
+    "pk": 1,
+    "fields": {
+        "button": 1
+    }
+},
+{
+    "model": "integration.mainselectoption",
+    "pk": 1,
+    "fields": {
+        "main_select": 1,
+        "text": "Quel véhicule souhaitez vous vendre 1"
+    }
+},
+{
+    "model": "integration.mainselectoption",
+    "pk": 2,
+    "fields": {
+        "main_select": 1,
+        "text": "Quel véhicule souhaitez vous vendre 2"
+    }
+},
+{
+    "model": "integration.cardsection",
+    "pk": 1,
+    "fields": {
+        "title": "Vendre sa voiture, une décision importante... et souvent risquée",
+        "is_hidden": true
+    }
+},
+{
+    "model": "integration.cardsection",
+    "pk": 2,
+    "fields": {
+        "title": "Nous avons rendu la vente et l'achat de véhicules : simple, rapide et totalement sécurisée",
+        "is_hidden": false
+    }
+},
+{
+    "model": "integration.cardsection",
+    "pk": 3,
+    "fields": {
+        "title": "Comment ça marche ?",
+        "is_hidden": false
+    }
+},
+{
+    "model": "integration.cardsection",
+    "pk": 4,
+    "fields": {
+        "title": "Pourquoi nous choisir",
+        "is_hidden": false
+    }
+},
+{
+    "model": "integration.cardsection",
+    "pk": 5,
+    "fields": {
+        "title": "Pourquoi devenir franchisé ?",
+        "is_hidden": false
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 1,
+    "fields": {
+        "section": 1,
+        "icon": "card/icons/risk-icon.png",
+        "subtitle": "",
+        "text": "Saviez-vous que 20% des\r\ntransactions entre particuliers\r\nimpliquent des tentatives de fraude ?"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 2,
+    "fields": {
+        "section": 1,
+        "icon": "card/icons/risk-icon_jOHZ7gn.png",
+        "subtitle": "",
+        "text": "10% des paiements sont réalisés\r\navec des chèques frauduleux ou\r\nsans provision"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 3,
+    "fields": {
+        "section": 1,
+        "icon": "card/icons/risk-icon_T5ONTw7.png",
+        "subtitle": "",
+        "text": "30% des vendeurs déclarent avoir\r\nperdu du temps avec des\r\nacheteurs peu sérieux"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 4,
+    "fields": {
+        "section": 2,
+        "icon": "card/icons/people.png",
+        "subtitle": "Gestion clé en main",
+        "text": "Notre équipe d'experts s'occupe de tout, des négociations au formalités administratives & légales"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 5,
+    "fields": {
+        "section": 2,
+        "icon": "card/icons/people_hwWroXi.png",
+        "subtitle": "Vendue sous 15 jours",
+        "text": "C'est la durée moyenne sur notre réseau pour vendre votre voiture au meilleur prix"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 6,
+    "fields": {
+        "section": 2,
+        "icon": "card/icons/people_1glfJAQ.png",
+        "subtitle": "Paiement garanti et sécurisé",
+        "text": "Toutes les transactions sont réalisées via notre système certifié, sans risque de fraude"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 7,
+    "fields": {
+        "section": 2,
+        "icon": "card/icons/people_yELnLYS.png",
+        "subtitle": "Service 100% gratuit",
+        "text": "Notre équipe d'experts s'occupe de tout, des négociations au formalités administratives & légales"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 8,
+    "fields": {
+        "section": 2,
+        "icon": "card/icons/people_EXeLlqI.png",
+        "subtitle": "+25% de gains",
+        "text": "Nous sommes la solution la plus généreuse du marché pour la vente de votre véhicule"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 9,
+    "fields": {
+        "section": 2,
+        "icon": "card/icons/people_4BidbUt.png",
+        "subtitle": "Gardiennage",
+        "text": "Vous pouvez garder votre véhicule jusqu’à la vente ou nous le confier"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 10,
+    "fields": {
+        "section": 3,
+        "icon": "card/icons/steps.png",
+        "subtitle": "1. Demandez une estimation",
+        "text": "Faites votre estimation en ligne gratuitement en quelques clics !"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 11,
+    "fields": {
+        "section": 3,
+        "icon": "card/icons/steps_Stwugsm.png",
+        "subtitle": "2. Déposez votre véhicule",
+        "text": "Nous gérons visites, formalités et négociations"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 12,
+    "fields": {
+        "section": 3,
+        "icon": "card/icons/steps_Zfatxe5.png",
+        "subtitle": "3. Vendez en toute sécurité",
+        "text": "Recevez votre paiement sécurisé et profitez du service de livraison"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 13,
+    "fields": {
+        "section": 4,
+        "icon": "card/icons/choose1.png",
+        "subtitle": "Intermédiaire de confiance",
+        "text": "Nous agissons comme un tiers neutre pour garantir une transaction transparente et sécurisée"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 14,
+    "fields": {
+        "section": 4,
+        "icon": "card/icons/choose1_Znw7jio.png",
+        "subtitle": "Nous agissons comme un tiers neutre pour garantir une transaction transparente et sécurisée",
+        "text": "Gestion des démarches administratives (carte grise, certificat de cession, etc.) incluses dans nos services"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 15,
+    "fields": {
+        "section": 4,
+        "icon": "card/icons/choose1_afyYybR.png",
+        "subtitle": "Sécurité des transactions",
+        "text": "Sécurité des transactions"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 16,
+    "fields": {
+        "section": 4,
+        "icon": "card/icons/choose1_Eon75IX.png",
+        "subtitle": "Garantie qualité",
+        "text": "Tous nos véhicules bénéficient d’une garantie de 3 mois après l’achat, pour une tranquillité assurée"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 17,
+    "fields": {
+        "section": 4,
+        "icon": "card/icons/choose1_7tiODU5.png",
+        "subtitle": "Transparence totale",
+        "text": "Pas de frais cachés : vous savez exactement combien vous recevrez ou paierez"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 18,
+    "fields": {
+        "section": 4,
+        "icon": "card/icons/choose1_ijOtkoY.png",
+        "subtitle": "Livraison incluse",
+        "text": "Votre voiture livrée directement à l’acheteur partout en France"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 19,
+    "fields": {
+        "section": 4,
+        "icon": "card/icons/choose1_VmVxDgs.png",
+        "subtitle": "Estimation immédiate",
+        "text": "Obtenez une évaluation en ligne fiable et sans engagement en quelques clics"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 20,
+    "fields": {
+        "section": 4,
+        "icon": "card/icons/choose1_W7b1jrt.png",
+        "subtitle": "Gain de temps",
+        "text": "On s'occupe de tout, de l'estimation à la vente."
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 21,
+    "fields": {
+        "section": 5,
+        "icon": "card/icons/franchise.png",
+        "subtitle": "Un modèle éprouvé",
+        "text": "Profitez de notre expertise et d’une marque reconnue"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 22,
+    "fields": {
+        "section": 5,
+        "icon": "card/icons/franchise_KG5OVua.png",
+        "subtitle": "Support complet",
+        "text": "Accompagnement stratégique, formation et outils de gestion"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 23,
+    "fields": {
+        "section": 5,
+        "icon": "card/icons/franchise_EedQUFt.png",
+        "subtitle": "Opportunité lucrative",
+        "text": "Réalisez vos ambitions entrepreneuriales avec un investissement sécurisé"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 24,
+    "fields": {
+        "section": 5,
+        "icon": "card/icons/franchise_RHzENxW.png",
+        "subtitle": "Opportunité lucrative",
+        "text": "Réalisez vos ambitions entrepreneuriales avec un investissement sécurisé"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 25,
+    "fields": {
+        "section": 5,
+        "icon": "card/icons/franchise_97JPE64.png",
+        "subtitle": "Opportunité lucrative",
+        "text": "Réalisez vos ambitions entrepreneuriales avec un investissement sécurisé"
+    }
+},
+{
+    "model": "integration.card",
+    "pk": 26,
+    "fields": {
+        "section": 5,
+        "icon": "card/icons/franchise_KOAg5oH.png",
+        "subtitle": "Opportunité lucrative",
+        "text": "Réalisez vos ambitions entrepreneuriales avec un investissement sécurisé"
+    }
+},
+{
+    "model": "integration.pricingsection",
+    "pk": 1,
+    "fields": {
+        "title": "OÙ est-il plus rentable de vendre une voiture ?",
+        "button": 2
+    }
+},
+{
+    "model": "integration.pricingplan",
+    "pk": 1,
+    "fields": {
+        "section": 1,
+        "title": "Vitesse de vente"
+    }
+},
+{
+    "model": "integration.pricingplan",
+    "pk": 2,
+    "fields": {
+        "section": 1,
+        "title": "Prix de vente"
+    }
+},
+{
+    "model": "integration.pricingplan",
+    "pk": 3,
+    "fields": {
+        "section": 1,
+        "title": "Sécurité juridique"
+    }
+},
+{
+    "model": "integration.pricingplan",
+    "pk": 4,
+    "fields": {
+        "section": 1,
+        "title": "Transparence de l'évaluation"
+    }
+},
+{
+    "model": "integration.pricingplan",
+    "pk": 5,
+    "fields": {
+        "section": 1,
+        "title": "Confort de transaction"
+    }
+},
+{
+    "model": "integration.pricingfeature",
+    "pk": 1,
+    "fields": {
+        "plan": 1,
+        "text": "14 jours",
+        "star_rating": null
+    }
+},
+{
+    "model": "integration.pricingfeature",
+    "pk": 2,
+    "fields": {
+        "plan": 1,
+        "text": "∞",
+        "star_rating": null
+    }
+},
+{
+    "model": "integration.pricingfeature",
+    "pk": 3,
+    "fields": {
+        "plan": 1,
+        "text": "2-3 heures",
+        "star_rating": null
+    }
+},
+{
+    "model": "integration.pricingfeature",
+    "pk": 7,
+    "fields": {
+        "plan": 2,
+        "text": null,
+        "star_rating": 2
+    }
+},
+{
+    "model": "integration.pricingfeature",
+    "pk": 8,
+    "fields": {
+        "plan": 2,
+        "text": null,
+        "star_rating": 3
+    }
+},
+{
+    "model": "integration.pricingfeature",
+    "pk": 9,
+    "fields": {
+        "plan": 2,
+        "text": null,
+        "star_rating": 1
+    }
+},
+{
+    "model": "integration.pricingfeature",
+    "pk": 12,
+    "fields": {
+        "plan": 3,
+        "text": null,
+        "star_rating": 3
+    }
+},
+{
+    "model": "integration.pricingfeature",
+    "pk": 13,
+    "fields": {
+        "plan": 3,
+        "text": null,
+        "star_rating": 1
+    }
+},
+{
+    "model": "integration.pricingfeature",
+    "pk": 14,
+    "fields": {
+        "plan": 3,
+        "text": null,
+        "star_rating": 3
+    }
+},
+{
+    "model": "integration.pricingfeature",
+    "pk": 16,
+    "fields": {
+        "plan": 4,
+        "text": null,
+        "star_rating": 3
+    }
+},
+{
+    "model": "integration.pricingfeature",
+    "pk": 17,
+    "fields": {
+        "plan": 4,
+        "text": null,
+        "star_rating": 1
+    }
+},
+{
+    "model": "integration.pricingfeature",
+    "pk": 18,
+    "fields": {
+        "plan": 4,
+        "text": null,
+        "star_rating": 1
+    }
+},
+{
+    "model": "integration.pricingfeature",
+    "pk": 19,
+    "fields": {
+        "plan": 5,
+        "text": null,
+        "star_rating": 3
+    }
+},
+{
+    "model": "integration.pricingfeature",
+    "pk": 20,
+    "fields": {
+        "plan": 5,
+        "text": null,
+        "star_rating": 1
+    }
+},
+{
+    "model": "integration.pricingfeature",
+    "pk": 21,
+    "fields": {
+        "plan": 5,
+        "text": null,
+        "star_rating": 2
+    }
+},
+{
+    "model": "integration.bannersection",
+    "pk": 1,
+    "fields": {
+        "title": "Rencontrons-nous dès aujourd'hui !",
+        "text": "Un conseiller dédié vous accompagnera pour répondre à vos questions et trouver le véhicule idéal. Prenez rendez-vous dès maintenant !",
+        "button": 3,
+        "image": "main_page/banners/meeting.png"
+    }
+},
+{
+    "model": "integration.bannersection",
+    "pk": 2,
+    "fields": {
+        "title": "Encore des doutes ?",
+        "text": "Découvrez pourquoi nous sommes la meilleure option pour vous ! Nos clients nous font confiance pour notre transparence, notre efficacité et nos services personnalisés.\r\n\r\nVous hésitez encore ? Contactez-nous et laissez-nous répondre à vos questions ou besoins spécifiques.",
+        "button": 5,
+        "image": "main_page/banners/doubt.png"
+    }
+},
+{
+    "model": "integration.bannersection",
+    "pk": 3,
+    "fields": {
+        "title": "Une question urgente ?",
+        "text": "Vous souhaitez parler directement à un conseiller ? Contactez-nous !",
+        "button": null,
+        "image": "main_page/banners/meeting_Aw1nLKJ.png"
+    }
+},
+{
+    "model": "integration.calculatorsection",
+    "pk": 1,
+    "fields": {
+        "title": "Obtenez une estimation en 2 minutes chrono !",
+        "background_image": "main_page/calculator/question-bg.png"
+    }
+},
+{
+    "model": "integration.reviewsection",
+    "pk": 1,
+    "fields": {
+        "title": "Témoignages clients",
+        "button": 4,
+        "rating_icon": "icons/google-logo.png",
+        "rating_star": "5.0"
+    }
+},
+{
+    "model": "integration.reviewcard",
+    "pk": 1,
+    "fields": {
+        "section": 1,
+        "name": "Thomas L.",
+        "rating": 5,
+        "text": "«J’avais besoin de vendre ma voiture rapidement et sans complications. Grâce à leur estimation en\r\nligne et leur inspection gratuite, tout s’est fait en 24 heures ! Paiement sécurisé et équipe professionnelle. Je recommande vivement.»",
+        "car_name": "Audi A5 F5",
+        "car_image": "car_images/reviews1.png"
+    }
+},
+{
+    "model": "integration.reviewcard",
+    "pk": 2,
+    "fields": {
+        "section": 1,
+        "name": "Julie M.",
+        "rating": 4,
+        "text": "«Trouver une voiture d’occasion fiable était un casse-tête jusqu’à ce que je tombe sur ce site. Leurs fiches détaillées et l’accompagnement d’un conseiller m’ont permis de dénicher exactement ce que je cherchais. Merci pour votre sérieux et votre transparence !»",
+        "car_name": "BMW X5 G05",
+        "car_image": "car_images/reviews2.png"
+    }
+},
+{
+    "model": "integration.reviewcard",
+    "pk": 3,
+    "fields": {
+        "section": 1,
+        "name": "Marc D.",
+        "rating": 5,
+        "text": "«Une expérience impeccable du début à la fin. J’ai vendu ma voiture à un excellent prix sans frais occupés de toutes les démarches administratives. Je suis impressionné par leur efficacité !»",
+        "car_name": "Peugeot 3008 I",
+        "car_image": "car_images/reviews3.png"
+    }
+},
+{
+    "model": "integration.reviewcard",
+    "pk": 4,
+    "fields": {
+        "section": 1,
+        "name": "Sarah P.",
+        "rating": 5,
+        "text": "«Le service est top ! Je n’ai pas trouvé le modèle que je voulais directement, mais leur conseiller a fait des recherches pour moi et m’a trouvé ma voiture de rêve en quelques jours. Je suis ravie !»",
+        "car_name": "Volkswagen Passat B8",
+        "car_image": "car_images/reviews4.png"
+    }
+},
+{
+    "model": "integration.youtubefeedsection",
+    "pk": 1,
+    "fields": {
+        "title": "YOUTUBE feed",
+        "subscriber_count": "100k abonnés",
+        "channel_link": "https://www.youtube.com/"
+    }
+},
+{
+    "model": "integration.youtubevideo",
+    "pk": 1,
+    "fields": {
+        "feed": 1,
+        "preview_image": "main_page/youtube_previews/hero-video-preview.png",
+        "title": "Nous agissons comme un tiers neutre pour garantir une transaction transparente et sécurisée",
+        "views_info": "300k. vues • il y a 18 heures",
+        "video_link": "https://www.youtube.com/watch?v=N8vc7qsWhoc"
+    }
+},
+{
+    "model": "integration.youtubevideo",
+    "pk": 2,
+    "fields": {
+        "feed": 1,
+        "preview_image": "main_page/youtube_previews/hero-video-preview_yyLyvRY.png",
+        "title": "Nous agissons comme un tiers neutre pour garantir une transaction transparente et sécurisée",
+        "views_info": "300k. vues • il y a 18 heures",
+        "video_link": "https://www.youtube.com/watch?v=N8vc7qsWhoc"
+    }
+},
+{
+    "model": "integration.faqsection",
+    "pk": 1,
+    "fields": {
+        "title": "FAQ"
+    }
+},
+{
+    "model": "integration.faqitem",
+    "pk": 1,
+    "fields": {
+        "section": 1,
+        "category": "customer",
+        "question": "Comment estimer la valeur de mon véhicule d'occasion ?",
+        "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    }
+},
+{
+    "model": "integration.faqitem",
+    "pk": 2,
+    "fields": {
+        "section": 1,
+        "category": "customer",
+        "question": "Quels documents sont nécessaires pour vendre ma voiture ?",
+        "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    }
+},
+{
+    "model": "integration.faqitem",
+    "pk": 3,
+    "fields": {
+        "section": 1,
+        "category": "customer",
+        "question": "Combien de temps faut-il pour finaliser la vente ?",
+        "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    }
+},
+{
+    "model": "integration.faqitem",
+    "pk": 4,
+    "fields": {
+        "section": 1,
+        "category": "customer",
+        "question": "Achetez-vous des voitures accidentées ou non roulantes ?",
+        "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    }
+},
+{
+    "model": "integration.faqitem",
+    "pk": 5,
+    "fields": {
+        "section": 1,
+        "category": "seller",
+        "question": "Comment estimer la valeur de mon véhicule d'occasion ?",
+        "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    }
+},
+{
+    "model": "integration.faqitem",
+    "pk": 6,
+    "fields": {
+        "section": 1,
+        "category": "seller",
+        "question": "Quels documents sont nécessaires pour vendre ma voiture ?",
+        "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    }
+},
+{
+    "model": "integration.faqitem",
+    "pk": 7,
+    "fields": {
+        "section": 1,
+        "category": "seller",
+        "question": "Combien de temps faut-il pour finaliser la vente ?",
+        "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    }
+},
+{
+    "model": "integration.faqitem",
+    "pk": 8,
+    "fields": {
+        "section": 1,
+        "category": "seller",
+        "question": "Achetez-vous des voitures accidentées ou non roulantes ?",
+        "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    }
+},
+{
+    "model": "integration.faqitem",
+    "pk": 9,
+    "fields": {
+        "section": 1,
+        "category": "customer",
+        "question": "Le paiement est-il immédiat et sécurisé ?",
+        "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    }
+},
+{
+    "model": "integration.faqitem",
+    "pk": 10,
+    "fields": {
+        "section": 1,
+        "category": "seller",
+        "question": "Le paiement est-il immédiat et sécurisé ?",
+        "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    }
+},
+{
+    "model": "integration.partnersection",
+    "pk": 1,
+    "fields": {
+        "title": "Nos partenaires"
+    }
+},
+{
+    "model": "integration.partner",
+    "pk": 1,
+    "fields": {
+        "section": 1,
+        "name": "Renault",
+        "logo": "main_page/partners/partner1.png"
+    }
+},
+{
+    "model": "integration.partner",
+    "pk": 2,
+    "fields": {
+        "section": 1,
+        "name": "Peugeot",
+        "logo": "main_page/partners/partner2.png"
+    }
+},
+{
+    "model": "integration.partner",
+    "pk": 3,
+    "fields": {
+        "section": 1,
+        "name": "Venturi",
+        "logo": "main_page/partners/partner3.png"
+    }
+},
+{
+    "model": "integration.partner",
+    "pk": 4,
+    "fields": {
+        "section": 1,
+        "name": "Citroen",
+        "logo": "main_page/partners/partner4.png"
+    }
+},
+{
+    "model": "integration.partner",
+    "pk": 5,
+    "fields": {
+        "section": 1,
+        "name": "Bugatti",
+        "logo": "main_page/partners/partner5.png"
+    }
+},
+{
+    "model": "integration.partner",
+    "pk": 6,
+    "fields": {
+        "section": 1,
+        "name": "A",
+        "logo": "main_page/partners/partner6.png"
+    }
+},
+{
+    "model": "integration.titresection",
+    "pk": 1,
+    "fields": {
+        "title": "Titre H2",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\r\n\r\nExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }
+},
+{
+    "model": "integration.footer",
+    "pk": 1,
+    "fields": {
+        "address": "84 avenue de Verdun, 92000",
+        "email": "contact@site.com",
+        "phone": "01 61 31 78 08",
+        "phone_help_text": "(Lundi au Vendredi, 9h-18h)",
+        "contacts_title": "Pour un contact rapide, voici nos informations :"
+    }
+},
+{
+    "model": "integration.sociallink",
+    "pk": 1,
+    "fields": {
+        "footer": 1,
+        "icon": "main_page/social_icons/tiktok.png",
+        "url": "http://206.81.17.158/index.html"
+    }
+},
+{
+    "model": "integration.sociallink",
+    "pk": 2,
+    "fields": {
+        "footer": 1,
+        "icon": "main_page/social_icons/tiktok_4jJK5G7.png",
+        "url": "http://206.81.17.158/index.html"
+    }
+},
+{
+    "model": "integration.sociallink",
+    "pk": 3,
+    "fields": {
+        "footer": 1,
+        "icon": "main_page/social_icons/tiktok_gMKjmTO.png",
+        "url": "http://206.81.17.158/index.html"
+    }
+},
+{
+    "model": "integration.sociallink",
+    "pk": 4,
+    "fields": {
+        "footer": 1,
+        "icon": "main_page/social_icons/tiktok_5TovfiJ.png",
+        "url": "http://206.81.17.158/index.html"
+    }
+},
+{
+    "model": "integration.footernote",
+    "pk": 1,
+    "fields": {
+        "footer": 1,
+        "rating": "4.9",
+        "text": "sur Google Reviews"
+    }
+},
+{
+    "model": "integration.tag",
+    "pk": 1,
+    "fields": {
+        "name": "conseils d’achat"
+    }
+},
+{
+    "model": "integration.tag",
+    "pk": 2,
+    "fields": {
+        "name": "actualités"
+    }
+},
+{
+    "model": "integration.mainpage",
+    "pk": 1,
+    "fields": {
+        "seo_title": "Vendez ou achetez votre voiture au meilleur prix, en toute simplicité",
+        "seo_description": "Description main",
+        "background_image": "main_page/backgrounds/hero_bg.png",
+        "rating": "5.0",
+        "title": "Vendez ou achetez votre voiture au meilleur prix, en toute simplicité",
+        "video_url": "https://www.youtube.com/watch?v=M5QY2_8704o&t=1s",
+        "video_text": "découvrez comment ça fonctionne",
+        "video_preview": "main_page/video_previews/hero-video-preview.png",
+        "main_screen_feature_block": 1,
+        "main_screen_select": 1,
+        "marketing_section": 1,
+        "feature_section": 2,
+        "steps_section": 3,
+        "pricing_section": 1,
+        "banner_section": 1,
+        "calculator_section": 1,
+        "why_chose_us_section": 4,
+        "review_section": 1,
+        "youtube_feed_section": 1,
+        "faq_section": 1,
+        "partner_section": 1,
+        "titre_section": 1,
+        "banner_section_2": 2,
+        "footer": 1
+    }
+},
+{
+    "model": "integration.contactpage",
+    "pk": 1,
+    "fields": {
+        "seo_title": "Title contact",
+        "seo_description": "Description contact",
+        "title_desc_block": 1,
+        "image_block": 1,
+        "faq_section": 1,
+        "footer": 1
+    }
+},
+{
+    "model": "integration.estimationpage",
+    "pk": 1,
+    "fields": {
+        "seo_title": "Title estimation",
+        "seo_description": "Description estimation",
+        "title_desc_block": 2,
+        "image_block": 2,
+        "faq_section": 1,
+        "footer": 1
+    }
+},
+{
+    "model": "integration.franchises",
+    "pk": 1,
+    "fields": {
+        "seo_title": "Title franchise",
+        "seo_description": "Description franchise",
+        "title_desc_block": 3,
+        "image_block": 3,
+        "faq_section": 1,
+        "footer": 1,
+        "why_need_franchise": 5,
+        "banner": 3
+    }
+},
+{
+    "model": "integration.blogpage",
+    "pk": 1,
+    "fields": {
+        "seo_title": "Title blog",
+        "seo_description": "Description blog",
+        "title_desc_block": 4,
+        "youtube_feed_section": 1,
+        "review_section": 1,
+        "footer": 1,
+        "why_chose_us_section": 4
+    }
+},
+{
+    "model": "integration.article",
+    "pk": 1,
+    "fields": {
+        "blog": 1,
+        "title": "5 astuces pour vendre votre voiture rapidement en 2024",
+        "description": "L'article propose cinq conseils clés pour une vente rapide et réussie d'une voiture en 2024. Il révèle des aspects tels que la préparation de la machine, l'évaluation de sa valeur, la création d'une annonce attrayante, le choix des sites appropriés pour la vente et la communication compétente avec les acheteurs. En appliquant ces recommandations, vous serez en mesure de minimiser le temps de trouver un acheteur et de vendre la voiture à des conditions favorables.",
+        "main_img": "blog/images/post-intro-img.png",
+        "text": "<div>Vendre une voiture rapidement et à un prix avantageux est un défi auquel de nombreux propriétaires sont confrontés. En 2024, grâce au développement de la technologie et des plates-formes en ligne, il est devenu encore plus facile de le faire. Voici cinq conseils pour vous aider à vendre votre voiture aussi efficacement que possible.<br/><br/></div><h1 id=\"1-pr-paration-correcte-du-v-hicule\"><strong>1. Préparation correcte du véhicule</strong></h1><div>Avant de mettre la machine en vente, prenez le temps de la préparer. Nettoyez l'intérieur, lavez et polissez la carrosserie, éliminez les petits défauts tels que les rayures ou les éclats de peinture. Investir dans des améliorations Cosmétiques minimes augmentera l'attractivité de la voiture et peut augmenter sa valeur aux yeux de l'acheteur.<br/><br/></div><h1 id=\"2-valuation-r-aliste-de-la-valeur\"><strong>2. Évaluation réaliste de la valeur</strong></h1><div>Établir un prix compétitif est la clé d'une vente rapide. Utilisez des ressources en ligne telles que AutoScout24 ou LeBonCoin pour examiner les prix de modèles similaires dans votre région. Si nécessaire, consultez un spécialiste. Rappelez-vous qu'un prix trop élevé effraie les acheteurs et qu'un prix trop bas peut susciter des soupçons.<br/><br/></div><h1 id=\"3-annonce-efficace\"><strong>3. Annonce efficace</strong></h1><div>Votre annonce doit être brillante et informative. Prenez des photos de haute qualité de la voiture sous différents angles, y compris l'intérieur et le coffre. Dans la Description, indiquez les informations clés: année de fabrication, kilométrage, état, historique de service et options supplémentaires. Évitez le texte trop long, mais essayez d'être aussi honnête et précis que possible.<br/><br/><figure class=\"attachment attachment--preview attachment--png\" data-trix-attachment='{\"contentType\":\"image/png\",\"filename\":\"post-image.png\",\"filesize\":623654,\"height\":567,\"url\":\"/public/media/post-image.png\",\"width\":610}' data-trix-attributes='{\"caption\":\"peugeot\",\"presentation\":\"gallery\"}' data-trix-content-type=\"image/png\"><img height=\"567\" src=\"/public/media/post-image.png\" width=\"610\"/><figcaption class=\"attachment__caption attachment__caption--edited\">peugeot</figcaption></figure></div><h1 id=\"4-choix-des-sites-de-vente\"><strong>4. Choix des sites de vente</strong></h1><div>Choisir les sites appropriés est une étape importante. Utilisez des sites populaires tels que AutoScout24, LeBonCoin ou des applications spécialisées. Plus vous couvrirez de sites, plus vous aurez de chances de trouver un acheteur. Considérez également les médias sociaux ou les annonces dans les groupes locaux.<br/><br/></div><h1 id=\"5-capacit-de-n-gocier\"><strong>5. Capacité de négocier</strong></h1><div>Lorsque les acheteurs commencent à montrer de l'intérêt, il est important d'être prêt à communiquer et à discuter du prix. Soyez poli et patient, fournissez des informations honnêtes sur l'état de la voiture. Si l'acheteur veut un rabais, discutez-en sur place et seulement après l'inspection de la voiture. Un argument convaincant de votre prix renforcera la confiance.<br/><br/></div><h1 id=\"emprisonnement\"><strong>Emprisonnement</strong></h1><div>En suivant ces cinq conseils, vous serez en mesure de vendre votre voiture en 2024 rapidement et à des conditions favorables. Préparation, évaluation réaliste de la valeur, annonce de qualité, le bon choix de sites et la capacité de communiquer avec les acheteurs — la clé du succès. Ne tardez pas, commencez à agir dès aujourd'hui!<br/><br/><br/></div><div><br/></div><div><br/></div><div><br/></div>",
+        "read_time": 3,
+        "author": "Louis Dubois",
+        "pub_date": "2024-12-28T16:38:05Z",
+        "plan": [
+            {
+                "title": "1. Préparation correcte du véhicule",
+                "anchor": "#1-pr-paration-correcte-du-v-hicule"
+            },
+            {
+                "title": "2. Évaluation réaliste de la valeur",
+                "anchor": "#2-valuation-r-aliste-de-la-valeur"
+            },
+            {
+                "title": "3. Annonce efficace",
+                "anchor": "#3-annonce-efficace"
+            },
+            {
+                "title": "4. Choix des sites de vente",
+                "anchor": "#4-choix-des-sites-de-vente"
+            },
+            {
+                "title": "5. Capacité de négocier",
+                "anchor": "#5-capacit-de-n-gocier"
+            },
+            {
+                "title": "Emprisonnement",
+                "anchor": "#emprisonnement"
+            }
+        ],
+        "tags": [
+            1
+        ]
+    }
+},
+{
+    "model": "integration.article",
+    "pk": 2,
+    "fields": {
+        "blog": 1,
+        "title": "Les dernières innovations automobiles",
+        "description": "L'article propose cinq conseils clés pour une vente rapide et réussie d'une voiture en 2024. Il révèle des aspects tels que la préparation de la machine, l'évaluation de sa valeur, la création d'une annonce attrayante, le choix des sites appropriés pour la vente et la communication compétente avec les acheteurs. En appliquant ces recommandations, vous serez en mesure de minimiser le temps de trouver un acheteur et de vendre la voiture à des conditions favorables.",
+        "main_img": "blog/images/post-intro-img_tkDAmPr.png",
+        "text": "<div>Vendre une voiture rapidement et à un prix avantageux est un défi auquel de nombreux propriétaires sont confrontés. En 2024, grâce au développement de la technologie et des plates-formes en ligne, il est devenu encore plus facile de le faire. Voici cinq conseils pour vous aider à vendre votre voiture aussi efficacement que possible.<br/><br/></div><h1 id=\"1-pr-paration-correcte-du-v-hicule\"><strong>1. Préparation correcte du véhicule</strong></h1><div>Avant de mettre la machine en vente, prenez le temps de la préparer. Nettoyez l'intérieur, lavez et polissez la carrosserie, éliminez les petits défauts tels que les rayures ou les éclats de peinture. Investir dans des améliorations Cosmétiques minimes augmentera l'attractivité de la voiture et peut augmenter sa valeur aux yeux de l'acheteur.<br/><br/></div><h1 id=\"2-valuation-r-aliste-de-la-valeur\"><strong>2. Évaluation réaliste de la valeur</strong></h1><div>Établir un prix compétitif est la clé d'une vente rapide. Utilisez des ressources en ligne telles que AutoScout24 ou LeBonCoin pour examiner les prix de modèles similaires dans votre région. Si nécessaire, consultez un spécialiste. Rappelez-vous qu'un prix trop élevé effraie les acheteurs et qu'un prix trop bas peut susciter des soupçons.<br/><br/></div><h1 id=\"3-annonce-efficace\"><strong>3. Annonce efficace</strong></h1><div>Votre annonce doit être brillante et informative. Prenez des photos de haute qualité de la voiture sous différents angles, y compris l'intérieur et le coffre. Dans la Description, indiquez les informations clés: année de fabrication, kilométrage, état, historique de service et options supplémentaires. Évitez le texte trop long, mais essayez d'être aussi honnête et précis que possible.<br/><br/><figure class=\"attachment attachment--preview attachment--png\" data-trix-attachment='{\"contentType\":\"image/png\",\"filename\":\"post-image.png\",\"filesize\":623654,\"height\":567,\"url\":\"/public/media/post-image_U9VPohX.png\",\"width\":610}' data-trix-attributes='{\"presentation\":\"gallery\"}' data-trix-content-type=\"image/png\"><img height=\"567\" src=\"/public/media/post-image_U9VPohX.png\" width=\"610\"/><figcaption class=\"attachment__caption\"><span class=\"attachment__name\">post-image.png</span> <span class=\"attachment__size\">609.04 KB</span></figcaption></figure></div><h1 id=\"4-choix-des-sites-de-vente\"><strong>4. Choix des sites de vente</strong></h1><div>Choisir les sites appropriés est une étape importante. Utilisez des sites populaires tels que AutoScout24, LeBonCoin ou des applications spécialisées. Plus vous couvrirez de sites, plus vous aurez de chances de trouver un acheteur. Considérez également les médias sociaux ou les annonces dans les groupes locaux.<br/><br/></div><h1 id=\"5-capacit-de-n-gocier\"><strong>5. Capacité de négocier</strong></h1><div>Lorsque les acheteurs commencent à montrer de l'intérêt, il est important d'être prêt à communiquer et à discuter du prix. Soyez poli et patient, fournissez des informations honnêtes sur l'état de la voiture. Si l'acheteur veut un rabais, discutez-en sur place et seulement après l'inspection de la voiture. Un argument convaincant de votre prix renforcera la confiance.<br/><br/></div><h1 id=\"emprisonnement\"><strong>Emprisonnement</strong></h1><div>En suivant ces cinq conseils, vous serez en mesure de vendre votre voiture en 2024 rapidement et à des conditions favorables. Préparation, évaluation réaliste de la valeur, annonce de qualité, le bon choix de sites et la capacité de communiquer avec les acheteurs — la clé du succès. Ne tardez pas, commencez à agir dès aujourd'hui!</div><div><br/></div>",
+        "read_time": 3,
+        "author": "Claire Moreau",
+        "pub_date": "2024-10-05T16:51:57Z",
+        "plan": [
+            {
+                "title": "1. Préparation correcte du véhicule",
+                "anchor": "#1-pr-paration-correcte-du-v-hicule"
+            },
+            {
+                "title": "2. Évaluation réaliste de la valeur",
+                "anchor": "#2-valuation-r-aliste-de-la-valeur"
+            },
+            {
+                "title": "3. Annonce efficace",
+                "anchor": "#3-annonce-efficace"
+            },
+            {
+                "title": "4. Choix des sites de vente",
+                "anchor": "#4-choix-des-sites-de-vente"
+            },
+            {
+                "title": "5. Capacité de négocier",
+                "anchor": "#5-capacit-de-n-gocier"
+            },
+            {
+                "title": "Emprisonnement",
+                "anchor": "#emprisonnement"
+            }
+        ],
+        "tags": [
+            2
+        ]
+    }
+}
+]

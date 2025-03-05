@@ -269,13 +269,13 @@ class YouTubeVideoInline(admin.TabularInline):
 
 @admin.register(YouTubeFeedSection)
 class YouTubeFeedSectionAdmin(admin.ModelAdmin):
-    list_display = ('title', 'subscriber_count', 'channel_link', 'duration')
+    list_display = ('title', 'subscriber_count', 'channel_link')
     inlines = [YouTubeVideoInline]
 
 
 @admin.register(YouTubeVideo)
 class YouTubeVideoAdmin(admin.ModelAdmin):
-    list_display = ('feed', 'preview_image', 'title', 'views_info', 'video_link')
+    list_display = ('feed', 'preview_image', 'title', 'views_info', 'video_link', 'duration')
 
 
 class FAQItemInline(admin.TabularInline):

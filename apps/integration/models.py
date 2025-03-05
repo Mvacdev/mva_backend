@@ -133,7 +133,6 @@ class YouTubeFeedSection(models.Model):
     title = models.CharField(max_length=255, help_text='Section title')
     subscriber_count = models.CharField(max_length=50, help_text='Subscriber count with label', blank=True)
     channel_link = models.URLField(help_text='YouTube channel link', blank=True)
-    duration = models.CharField(max_length=8, help_text='6:32 (for example)', blank=True)
 
 
 class YouTubeVideo(models.Model):
@@ -142,6 +141,7 @@ class YouTubeVideo(models.Model):
     title = models.CharField(max_length=255, help_text='Video title')
     views_info = models.CharField(max_length=255, help_text='Views and time info', blank=True)
     video_link = models.URLField(help_text='YouTube video link')
+    duration = models.CharField(max_length=8, help_text='6:32 (for example)', blank=True)
 
 
 class FAQSection(models.Model):

@@ -1,4 +1,5 @@
 import re
+import os
 
 from bs4 import BeautifulSoup
 from django.db import models
@@ -8,6 +9,16 @@ from django.utils import timezone
 from trix_editor.fields import TrixEditorField
 
 from apps.core.utils import get_min_read_time
+
+
+def svg_validator(value):
+    pass
+
+
+def image_validator(value):
+    ext = os.path.splitext(value.name)[1]  # Get file extension
+    if ext.lower() not in [".svg", ".png", ".jpeg", "jpg"]:
+        raise ValidationError("Only Image files are allowed.")
 
 
 class TitleDescriptionBlock(models.Model):
@@ -31,7 +42,7 @@ class MainScreenFeatureBlock(models.Model):
 
 class MainScreenFeature(models.Model):
     block = models.ForeignKey(MainScreenFeatureBlock, on_delete=models.CASCADE, related_name='features')
-    icon = models.ImageField(upload_to='main_page/icons/', help_text='Icon')
+    icon = models.FileField(upload_to='main_page/icons/', help_text='Icon', validators=[image_validator])
     text = models.CharField(max_length=255, help_text='Text')
 
 
@@ -51,7 +62,7 @@ class CardSection(models.Model):
 
 class Card(models.Model):
     section = models.ForeignKey(CardSection, on_delete=models.CASCADE, related_name='cards')
-    icon = models.ImageField(upload_to='card/icons/', help_text='Icon', blank=True, null=True)
+    icon = models.FileField(upload_to='card/icons/', help_text='Icon', blank=True, null=True, validators=[image_validator])
     subtitle = models.CharField(max_length=255, help_text='Subtitle', blank=True)
     text = models.TextField(help_text='Text')
 
@@ -95,7 +106,7 @@ class ReviewSection(models.Model):
     title = models.CharField(max_length=255, help_text='Section title')
     button = models.ForeignKey(Button, on_delete=models.SET_NULL, blank=True, null=True)
     # rating_title = models.CharField(max_length=25) ???
-    rating_icon = models.ImageField(upload_to='icons/', help_text='Company icon', null=True, blank=True)
+    rating_icon = models.FileField(upload_to='icons/', help_text='Company icon', null=True, blank=True, validators=[image_validator])
     rating_star = models.DecimalField(
         max_digits=2, decimal_places=1,
         validators=[MinValueValidator(0), MaxValueValidator(5)],
@@ -172,7 +183,7 @@ class Footer(models.Model):
 
 class SocialLink(models.Model):
     footer = models.ForeignKey(Footer, on_delete=models.CASCADE, related_name='social_links')
-    icon = models.ImageField(upload_to='main_page/social_icons/', help_text='Social media icon')
+    icon = models.FileField(upload_to='main_page/social_icons/', help_text='Social media icon', validators=[image_validator])
     url = models.URLField(help_text='Social media link')
 
 

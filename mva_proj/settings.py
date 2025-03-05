@@ -344,6 +344,19 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+# Allow SVG files
+from django.core.files.uploadhandler import MemoryFileUploadHandler, TemporaryFileUploadHandler
+
+FILE_UPLOAD_HANDLERS = [
+    "django.core.files.uploadhandler.MemoryFileUploadHandler",
+    "django.core.files.uploadhandler.TemporaryFileUploadHandler",
+]
+
+# Extend allowed file types
+import mimetypes
+mimetypes.add_type("image/svg+xml", ".svg", True)
+
+
 # Celery settings
 CELERY_BROKER_URL = 'redis://localhost:6379'
 # CELERY_RESULT_BACKEND = "redis://localhost:6379"

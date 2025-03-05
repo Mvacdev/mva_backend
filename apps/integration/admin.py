@@ -269,7 +269,7 @@ class YouTubeVideoInline(admin.TabularInline):
 
 @admin.register(YouTubeFeedSection)
 class YouTubeFeedSectionAdmin(admin.ModelAdmin):
-    list_display = ('title', 'subscriber_count', 'channel_link')
+    list_display = ('title', 'subscriber_count', 'channel_link', 'duration')
     inlines = [YouTubeVideoInline]
 
 

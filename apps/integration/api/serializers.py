@@ -271,7 +271,7 @@ class ArticleSerializer(serializers.ModelSerializer):
 
 
 class BlogPageSerializer(serializers.ModelSerializer):
-    articles = ArticleSerializer(read_only=True, many=True)
+    # articles = ArticleSerializer(read_only=True, many=True)
     title_desc_block = TitleDescriptionBlockSerializer()
     youtube_feed_section = YouTubeFeedSectionSerializer()
     review_section = ReviewSectionSerializer()
@@ -283,7 +283,7 @@ class BlogPageSerializer(serializers.ModelSerializer):
         model = BlogPage
         fields = [
             'id', 'seo_title', 'seo_description', 'title_desc_block', 'youtube_feed_section', 'review_section', 'footer',
-            'all_tags', 'why_chose_us_section', 'articles'
+            'all_tags', 'why_chose_us_section'  #, 'articles'
         ]
 
     def get_all_tags(self, obj):

@@ -1,4 +1,5 @@
 from django_filters.rest_framework import DjangoFilterBackend
+from django_filters import rest_framework as rf_filters
 from rest_framework import viewsets, filters
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
@@ -109,14 +110,23 @@ class BlogViewSet(viewsets.ReadOnlyModelViewSet):
         return Response(response_data)
 
 
+class ArticleFilter(rf_filters.FilterSet):
+    tags__name = rf_filters.BaseInFilter(field_name='tags__name', lookup_expr='in')
+
+    class Meta:
+        model = Article
+        fields = ['tags__name']
+
+
 class ArticleViewSet(viewsets.ReadOnlyModelViewSet):
     # queryset = Article.objects.all().order_by('-pub_date')
     serializer_class = ArticleSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     pagination_class = ArticlePagination
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_class = ArticleFilter  # Указываем фильтр
 
-    filterset_fields = ['tags__name']
+    # filterset_fields = ['tags__name']
 
     search_fields = ['title', 'description', 'author']
 

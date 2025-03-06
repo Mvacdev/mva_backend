@@ -1,3 +1,5 @@
+from urllib.parse import unquote
+
 from django_filters.rest_framework import DjangoFilterBackend
 from django_filters import rest_framework as rf_filters
 from rest_framework import viewsets, filters
@@ -110,8 +112,19 @@ class BlogViewSet(viewsets.ReadOnlyModelViewSet):
         return Response(response_data)
 
 
+# class ArticleFilter(rf_filters.FilterSet):
+#     tags__name = rf_filters.BaseInFilter(field_name='tags__name', lookup_expr='in')
+#     # decoded_url = unquote(url)
+#     class Meta:
+#         model = Article
+#         fields = ['tags__name']
+
 class ArticleFilter(rf_filters.FilterSet):
     tags__name = rf_filters.BaseInFilter(field_name='tags__name', lookup_expr='in')
+
+    def filter_tags_name(self, queryset, name, value):
+        decoded_values = [unquote(v) for v in value]
+        return queryset.filter(tags__name__in=decoded_values)
 
     class Meta:
         model = Article

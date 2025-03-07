@@ -363,7 +363,7 @@ class Article(models.Model):
                 </section>
                 <section class="post__section">
                   <div class="post__image">
-                    <img class="post__image-elem" src="{image['src']}" alt="{image['alt']}">
+                    <img class="post__image-elem" src="http://206.81.17.158{image['src']}" alt="{image['alt']}">
                   </div>
                 </section>
                 <section class="post__section">

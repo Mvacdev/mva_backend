@@ -47,6 +47,7 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
     path('trix-editor/', include('trix_editor.urls')),
+    path("ckeditor5/", include('django_ckeditor_5.urls')),
 
     # path('', include('apps.core.urls')),
     # path('users/', include('apps.users.urls')),

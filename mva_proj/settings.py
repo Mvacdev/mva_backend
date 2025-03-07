@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'nested_admin',
     'mptt',
     'trix_editor',
+    'django_ckeditor_5',
     # 'sslserver',
     'corsheaders',
     'admin_reorder',
@@ -381,6 +382,57 @@ CELERY_worker_cancel_long_running_tasks_on_conncetion_loss = True
 # }
 
 DJANGO_CELERY_RESULTS_TASK_ID_MAX_LENGTH = 191
+
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': 'full',
+#         'height': 400,
+#         'width': '100%',
+#         'extraPlugins': ','.join([
+#             'justify',  # Выравнивание текста
+#             'colorbutton',  # Цвет текста
+#             'font',  # Шрифты
+#             'codesnippet',  # Код
+#         ]),
+#         'format_tags': 'h1;h2;h3;h4;h5;h6;p',  # Включаем все заголовки
+#     }
+# }
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': [
+#             ['Bold', 'Italic', 'Underline', '-', 'Link', 'Unlink', 'Strike', '-', 'RemoveFormat', '-', 'NumberedList', 'BulletedList'],
+#             ['Blockquote', 'Code', 'Image', 'Table', '-', 'Undo', 'Redo', 'Source'],
+#         ],
+#         'removePlugins': 'image,flash,smiley,forms,about',  # Убирает плагины загрузки изображений и другие ненужные
+#         'extraPlugins': 'filebrowser',  # Убирает поддержку загрузки файлов
+#     },
+# }
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': {
+            'items': [
+                'heading', '|', 'bold', 'italic', 'link',
+                'bulletedList', 'numberedList', 'blockQuote'
+            ],
+        },
+        'heading': {
+            'options': [
+                { 'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph' },
+                { 'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1' },
+                { 'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2' },
+                { 'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3' }
+            ]
+        },
+        'list': {
+            'properties': {
+                'styles': True,  # Разрешить стили списков
+                'startIndex': True,  # Разрешить указание индекса начала списка
+                'reversed': True,  # Разрешить реверс списка
+            }
+        }
+    },
+}
+
 
 
 # OAUTH2 Settings

@@ -2,6 +2,7 @@ import re
 import os
 
 from bs4 import BeautifulSoup
+from django_ckeditor_5.fields import CKEditor5Field
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.core.exceptions import ValidationError
@@ -177,7 +178,9 @@ class Partner(models.Model):
 
 class TitreSection(models.Model):
     title = models.CharField(max_length=255, help_text='Section title')
-    text = models.TextField(help_text='Section text')
+    # text = models.TextField(help_text='Section text')
+    # text = TrixEditorField(max_length=10000, help_text='Section text')
+    text = CKEditor5Field(max_length=10000, help_text='Section text')
 
 
 class Footer(models.Model):

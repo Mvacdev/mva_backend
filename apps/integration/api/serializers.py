@@ -278,12 +278,13 @@ class BlogPageSerializer(serializers.ModelSerializer):
     footer = FooterSerializer()
     all_tags = serializers.SerializerMethodField()
     why_chose_us_section = CardSectionSerializer()
+    banner_section = BannerSectionSerializer()
 
     class Meta:
         model = BlogPage
         fields = [
             'id', 'seo_title', 'seo_description', 'title_desc_block', 'youtube_feed_section', 'review_section', 'footer',
-            'all_tags', 'why_chose_us_section'  #, 'articles'
+            'all_tags', 'why_chose_us_section', 'banner_section'
         ]
 
     def get_all_tags(self, obj):

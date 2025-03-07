@@ -115,7 +115,7 @@ class BlogPageAdmin(admin.ModelAdmin):
     search_fields = ("seo_title", "seo_description")
     fieldsets = (
         ("SEO", {"fields": ("seo_title", "seo_description")}),
-        ("Blocks", {"fields": ("title_desc_block", "youtube_feed_section", "review_section", "footer", "why_chose_us_section")}),
+        ("Blocks", {"fields": ("title_desc_block", "youtube_feed_section", "review_section", "footer", "why_chose_us_section", "banner_section")}),
     )
     inlines = [ArticleInline]
 

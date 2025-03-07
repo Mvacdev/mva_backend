@@ -298,6 +298,8 @@ class BlogPage(models.Model):
     # TODO: Put into Article page ------------
     # ---- Why Chose Us -----
     why_chose_us_section = models.OneToOneField(CardSection, on_delete=models.SET_NULL, blank=True, null=True)
+    #  ---- BannerSection -----
+    banner_section = models.OneToOneField(BannerSection, on_delete=models.SET_NULL, blank=True, null=True)
 
 
 class Article(models.Model):

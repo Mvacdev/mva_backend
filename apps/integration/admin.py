@@ -124,6 +124,7 @@ class BlogPageAdmin(admin.ModelAdmin):
 class ArticleAdmin(admin.ModelAdmin):
     # form = ArticleAdminForm
     list_display = ("title", "author", "pub_date", "read_time", "blog")
+    list_editable = ["blog"]
     search_fields = ("title", "author", "tags__name")
     list_filter = ("blog", "pub_date", "tags")
     filter_horizontal = ("tags",)

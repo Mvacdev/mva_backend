@@ -155,6 +155,12 @@ class FAQItem(models.Model):
     answer = models.TextField(help_text='Answer')
 
 
+class FAQAlternativeItem(models.Model):
+    section = models.ForeignKey(FAQSection, on_delete=models.CASCADE, related_name='alternative_items')
+    question = models.CharField(max_length=255, help_text='Question')
+    answer = models.TextField(help_text='Answer')
+
+
 class PartnerSection(models.Model):
     title = models.CharField(max_length=255, help_text='Section title')
 

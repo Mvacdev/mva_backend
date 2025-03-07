@@ -7,7 +7,7 @@ from apps.integration.models import (
     CalculatorSection, ReviewSection, ReviewCard, YouTubeFeedSection, YouTubeVideo,
     FAQSection, FAQItem, PartnerSection, Partner, TitreSection, Footer, SocialLink,
     FooterNote, Button, ContactPage, EstimationPage, Franchises, TitleDescriptionBlock, ImageBlock, Tag, Article,
-    BlogPage
+    BlogPage, FAQAlternativeItem
 )
 
 # class MainPageSerializer(serializers.ModelSerializer):
@@ -139,8 +139,15 @@ class FAQItemSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class FAQAlternativeItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FAQAlternativeItem
+        fields = '__all__'
+
+
 class FAQSectionSerializer(serializers.ModelSerializer):
     items = FAQItemSerializer(many=True)
+    alternative_items = FAQAlternativeItemSerializer(many=True)
 
     class Meta:
         model = FAQSection

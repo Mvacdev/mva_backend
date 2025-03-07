@@ -6,7 +6,7 @@ from apps.integration.models import (
     PricingSection, PricingPlan, PricingFeature, BannerSection, CalculatorSection, ReviewSection,
     ReviewCard, YouTubeFeedSection, YouTubeVideo, FAQSection, FAQItem, PartnerSection, Partner,
     TitreSection, Footer, SocialLink, FooterNote, MainPage, ContactPage, EstimationPage, Franchises,
-    TitleDescriptionBlock, ImageBlock, BlogPage, Article, Tag
+    TitleDescriptionBlock, ImageBlock, BlogPage, Article, Tag, FAQAlternativeItem
 )
 
 
@@ -279,16 +279,62 @@ class YouTubeVideoAdmin(admin.ModelAdmin):
     list_display = ('feed', 'preview_image', 'title', 'views_info', 'video_link', 'duration')
 
 
-class FAQItemInline(admin.TabularInline):
-    list_display = ('category', 'question', 'answer')
+class CustomerFAQItemInline(admin.TabularInline):
     model = FAQItem
     extra = 0
+    fields = ('question', 'answer')
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        return qs.filter(category='customer')
+
+
+class SellerFAQItemInline(admin.TabularInline):
+    model = FAQItem
+    extra = 0
+    fields = ('question', 'answer')
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        return qs.filter(category='seller')
+
+
+class FAQAlternativeItemInline(admin.TabularInline):
+    model = FAQAlternativeItem
+    extra = 0
+    fields = ('question', 'answer')
 
 
 @admin.register(FAQSection)
 class FAQSectionAdmin(admin.ModelAdmin):
     list_display = ('title',)
-    inlines = [FAQItemInline]
+
+    def get_inline_instances(self, request, obj=None):
+        inlines = []
+
+        customer_inline = CustomerFAQItemInline(self.model, self.admin_site)
+        seller_inline = SellerFAQItemInline(self.model, self.admin_site)
+        alternative_inline = FAQAlternativeItemInline(self.model, self.admin_site)
+
+        customer_inline.verbose_name_plural = "FAQ for Customer"
+        seller_inline.verbose_name_plural = "FAQ for Seller"
+
+        inlines.append(customer_inline)
+        inlines.append(seller_inline)
+        inlines.append(alternative_inline)
+
+        return inlines
+
+# class FAQItemInline(admin.TabularInline):
+#     list_display = ('category', 'question', 'answer')
+#     model = FAQItem
+#     extra = 0
+#
+#
+# @admin.register(FAQSection)
+# class FAQSectionAdmin(admin.ModelAdmin):
+#     list_display = ('title',)
+#     inlines = [FAQItemInline]
 
 
 @admin.register(FAQItem)

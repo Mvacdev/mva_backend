@@ -312,31 +312,107 @@ class Article(models.Model):
     description = models.TextField(max_length=1000, blank=True)
     main_img = models.ImageField(upload_to='blog/images/', help_text='Article main image')
     text = TrixEditorField(max_length=5000, help_text='Article text', blank=True)
+    parsed_text = models.TextField(max_length=5000, help_text='Parsed article text', blank=True)
     read_time = models.PositiveSmallIntegerField(default=0, help_text='Article read time in minutes')
     author = models.CharField(max_length=50, help_text='The author of the article')
     pub_date = models.DateTimeField(default=timezone.now, help_text='Publication date')
     tags = models.ManyToManyField(Tag, related_name="articles", blank=True)
-    plan = models.JSONField(default=list, blank=True, help_text='Article plan')
+    plan = models.TextField(max_length=5000, blank=True, help_text='Article plan')
 
-    def extract_plan_and_update_text(self):
-        """Finds h2 headings, creates anchors and updates article text."""
-        soup = BeautifulSoup(self.text, "html.parser")
-        plan = []
+    def parse_editor_text(self, editor_text):
+        # Создаем объект BeautifulSoup для удобной работы с HTML
+        soup = BeautifulSoup(editor_text, 'html.parser')
 
-        for h1 in soup.find_all("h1"):
+        # Найдем все заголовки h1 и обработаем их
+        sections = []
+        section_id = 1
+        for h1 in soup.find_all('h1'):
+            # Извлекаем текст заголовка (например "1. Préparation correcte du véhicule")
             title = h1.get_text(strip=True)
-            anchor = re.sub(r'[^a-zA-Z0-9]+', '-', title.lower()).strip('-')
-            h1["id"] = anchor
-            plan.append({"title": title, "anchor": f"#{anchor}"})
+            section_title = title.split(' ', 1)[1] if len(title.split(' ', 1)) > 1 else title
+            section_id_str = f"section{section_id}"
 
-        return plan, str(soup)
+            # Ищем следующий блок текста, который идет после заголовка
+            next_div = h1.find_next('div')
+            section_content = next_div.get_text(separator=" ", strip=True) if next_div else ''
+
+            # Формируем HTML для текущего раздела
+            section_html = f'''
+            <section class="post__section" id="{section_id_str}">
+              <h2>{section_title}</h2>
+              <p>{section_content}</p>
+            '''
+
+            # Ищем возможные изображения в блоках figure и добавляем их в отдельную секцию
+            images = []
+            for figure in next_div.find_all('figure'):
+                img = figure.find('img')
+                if img:
+                    img_src = img.get('src', '')
+                    img_alt = img.get('alt', '')
+                    caption = figure.find('figcaption').get_text(strip=True) if figure.find('figcaption') else ''
+                    images.append({
+                        'src': img_src,
+                        'alt': img_alt,
+                        'caption': caption
+                    })
+
+            # Если есть изображения, добавляем их в отдельную секцию
+            for image in images:  # <figcaption>{image['caption']}</figcaption>
+                section_html += f'''
+                </section>
+                <section class="post__section">
+                  <div class="post__image">
+                    <img class="post__image-elem" src="{image['src']}" alt="{image['alt']}">
+                  </div>
+                </section>
+                <section class="post__section">
+                '''
+            section_html += '</section>'
+            sections.append(section_html)
+            section_id += 1
+
+        # Теперь формируем итоговый HTML с добавленными секциями
+        post_html = "\n".join(sections)
+
+        return post_html
+
+    # def extract_plan_and_update_text(self):
+    #     """Finds h2 headings, creates anchors and updates article text."""
+    #     soup = BeautifulSoup(self.text, "html.parser")
+    #     plan = []
+    #
+    #     for h1 in soup.find_all("h1"):
+    #         title = h1.get_text(strip=True)
+    #         anchor = re.sub(r'[^a-zA-Z0-9]+', '-', title.lower()).strip('-')
+    #         h1["id"] = anchor
+    #         plan.append({"title": title, "anchor": f"#{anchor}"})
+    #
+    #     return plan, str(soup)
+
+    def generate_toc(self, parsed_text):
+        # Ищем все секции с id и заголовками
+        sections = re.findall(r'<section class="post__section" id="([^"]+)">.*?<h2>(.*?)</h2>', parsed_text, re.DOTALL)
+
+        # Формируем таблицу содержания
+        toc = '<section class="post__toc">\n  <h2 class="post__toc-title">Plan de l’article</h2>\n  <ul class="post__toc-list">'
+
+        for section in sections:
+            section_id, title = section
+            toc += f'\n    <li class="post__toc-item">\n      <a href="#{section_id}">{title}</a>\n    </li>'
+
+        toc += '\n  </ul>\n</section>'
+
+        return toc
 
     def __str__(self):
         return self.title
 
     def save(self, *args, **kwargs):
         self.read_time = get_min_read_time(self.text)
-        self.plan, self.text = self.extract_plan_and_update_text()
+        # self.plan, self.text = self.extract_plan_and_update_text()
+        self.parsed_text = self.parse_editor_text(self.text)
+        self.plan = self.generate_toc(self.parsed_text)
         # if not self.seo_title:
         #     self.seo_title = self.title
         # if not self.seo_description:

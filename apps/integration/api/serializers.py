@@ -267,7 +267,7 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = ['id', 'title', 'description', 'main_img', 'text', 'read_time', 'author', 'pub_date', 'tags', 'plan']
+        fields = ['id', 'title', 'description', 'main_img', 'text', 'parsed_text', 'read_time', 'author', 'pub_date', 'tags', 'plan']
 
 
 class BlogPageSerializer(serializers.ModelSerializer):

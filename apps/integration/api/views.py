@@ -1,5 +1,6 @@
 from urllib.parse import unquote
 
+from django.db.models import F
 from django_filters.rest_framework import DjangoFilterBackend
 from django_filters import rest_framework as rf_filters
 from rest_framework import viewsets, filters
@@ -132,14 +133,11 @@ class ArticleFilter(rf_filters.FilterSet):
 
 
 class ArticleViewSet(viewsets.ReadOnlyModelViewSet):
-    # queryset = Article.objects.all().order_by('-pub_date')
     serializer_class = ArticleSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     pagination_class = ArticlePagination
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    filterset_class = ArticleFilter  # Указываем фильтр
-
-    # filterset_fields = ['tags__name']
+    filterset_class = ArticleFilter
 
     search_fields = ['title', 'description', 'author']
 
@@ -147,5 +145,16 @@ class ArticleViewSet(viewsets.ReadOnlyModelViewSet):
         blog_page = BlogPage.objects.order_by('-id').first()
         if not blog_page:
             return Response({'detail': 'Not found.'}, status=404)
-        return blog_page.articles.order_by('-pub_date')
+
+        queryset = blog_page.articles.all()
+
+        # Получаем параметр сортировки из запроса
+        sort_param = self.request.query_params.get('sort', 'date')
+
+        if sort_param == 'reading_time':
+            queryset = queryset.order_by(F('read_time').asc(nulls_last=True))  # NULL-значения в конце
+        else:
+            queryset = queryset.order_by(F('pub_date').desc(nulls_last=True))  # По умолчанию сортировка по дате
+
+        return queryset
 

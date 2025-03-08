@@ -407,7 +407,7 @@ class PartnerInline(admin.TabularInline):
 
 @admin.register(PartnerSection)
 class PartnerSectionAdmin(admin.ModelAdmin):
-    list_display = ('title',)
+    list_display = ('title', 'is_hidden')
     inlines = [PartnerInline]
 
 

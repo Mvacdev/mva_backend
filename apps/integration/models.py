@@ -164,6 +164,7 @@ class FAQAlternativeItem(models.Model):
 
 class PartnerSection(models.Model):
     title = models.CharField(max_length=255, help_text='Section title')
+    is_hidden = models.BooleanField(default=False, help_text='Hide this section')
 
 
 class Partner(models.Model):

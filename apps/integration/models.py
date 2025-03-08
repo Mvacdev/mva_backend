@@ -180,7 +180,7 @@ class TitreSection(models.Model):
     title = models.CharField(max_length=255, help_text='Section title')
     # text = models.TextField(help_text='Section text')
     # text = TrixEditorField(max_length=10000, help_text='Section text')
-    text = CKEditor5Field(max_length=10000, help_text='Section text')
+    text = CKEditor5Field(max_length=20000, help_text='Section text')
 
 
 class Footer(models.Model):

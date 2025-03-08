@@ -418,7 +418,7 @@ class PartnerAdmin(admin.ModelAdmin):
 
 @admin.register(TitreSection)
 class TitreSectionAdmin(admin.ModelAdmin):
-    list_display = ('title', 'text')
+    list_display = ('text',)
 
 
 class SocialLinkInline(admin.TabularInline):

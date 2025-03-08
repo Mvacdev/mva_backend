@@ -177,10 +177,10 @@ class Partner(models.Model):
 
 
 class TitreSection(models.Model):
-    title = models.CharField(max_length=255, help_text='Section title')
+    title = models.CharField(max_length=255, help_text='Section title', blank=True)
     # text = models.TextField(help_text='Section text')
     # text = TrixEditorField(max_length=10000, help_text='Section text')
-    text = CKEditor5Field(max_length=20000, help_text='Section text')
+    text = CKEditor5Field(max_length=20000, help_text='Section text', blank=True)
 
 
 class Footer(models.Model):

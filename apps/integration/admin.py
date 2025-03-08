@@ -6,7 +6,8 @@ from apps.integration.models import (
     PricingSection, PricingPlan, PricingFeature, BannerSection, CalculatorSection, ReviewSection,
     ReviewCard, YouTubeFeedSection, YouTubeVideo, FAQSection, FAQItem, PartnerSection, Partner,
     TitreSection, Footer, SocialLink, FooterNote, MainPage, ContactPage, EstimationPage, Franchises,
-    TitleDescriptionBlock, ImageBlock, BlogPage, Article, Tag, FAQAlternativeItem
+    TitleDescriptionBlock, ImageBlock, BlogPage, Article, Tag, FAQAlternativeItem, PoliticsPage, CookiesPage,
+    MentionPage
 )
 
 
@@ -139,6 +140,62 @@ class TagAdmin(admin.ModelAdmin):
 
 
 # -------------
+
+@admin.register(PoliticsPage)
+class PoliticsAdmin(admin.ModelAdmin):
+    list_display_links = ['id', 'seo_title']
+    list_display = ('id', 'seo_title', 'seo_description')
+
+    fieldsets = (
+        ('MetaInfo', {'fields': (
+            'seo_title', 'seo_description',
+        )}),
+        ('Blocks', {'fields': (
+            'titre_section',
+        )}),
+        ('Footer', {'fields': (
+            'footer',
+        )}),
+    )
+
+
+@admin.register(CookiesPage)
+class CookiesAdmin(admin.ModelAdmin):
+    list_display_links = ['id', 'seo_title']
+    list_display = ('id', 'seo_title', 'seo_description')
+
+    fieldsets = (
+        ('MetaInfo', {'fields': (
+            'seo_title', 'seo_description',
+        )}),
+        ('Blocks', {'fields': (
+            'titre_section',
+        )}),
+        ('Footer', {'fields': (
+            'footer',
+        )}),
+    )
+
+
+@admin.register(MentionPage)
+class MentionAdmin(admin.ModelAdmin):
+    list_display_links = ['id', 'seo_title']
+    list_display = ('id', 'seo_title', 'seo_description')
+
+    fieldsets = (
+        ('MetaInfo', {'fields': (
+            'seo_title', 'seo_description',
+        )}),
+        ('Blocks', {'fields': (
+            'titre_section',
+        )}),
+        ('Footer', {'fields': (
+            'footer',
+        )}),
+    )
+
+
+# --------------
 
 @admin.register(TitleDescriptionBlock)
 class TitleDescriptionBlockAdmin(admin.ModelAdmin):

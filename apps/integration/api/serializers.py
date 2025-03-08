@@ -7,7 +7,7 @@ from apps.integration.models import (
     CalculatorSection, ReviewSection, ReviewCard, YouTubeFeedSection, YouTubeVideo,
     FAQSection, FAQItem, PartnerSection, Partner, TitreSection, Footer, SocialLink,
     FooterNote, Button, ContactPage, EstimationPage, Franchises, TitleDescriptionBlock, ImageBlock, Tag, Article,
-    BlogPage, FAQAlternativeItem
+    BlogPage, FAQAlternativeItem, PoliticsPage, MentionPage, CookiesPage
 )
 
 # class MainPageSerializer(serializers.ModelSerializer):
@@ -296,3 +296,30 @@ class BlogPageSerializer(serializers.ModelSerializer):
 
     def get_all_tags(self, obj):
         return Tag.objects.values_list('name', flat=True)
+
+
+class PoliticsPageSerializer(serializers.ModelSerializer):
+    titre_section = TitreSectionSerializer()
+    footer = FooterSerializer()
+
+    class Meta:
+        model = PoliticsPage
+        fields = '__all__'
+
+
+class CookiesPageSerializer(serializers.ModelSerializer):
+    titre_section = TitreSectionSerializer()
+    footer = FooterSerializer()
+
+    class Meta:
+        model = CookiesPage
+        fields = '__all__'
+
+
+class MentionPageSerializer(serializers.ModelSerializer):
+    titre_section = TitreSectionSerializer()
+    footer = FooterSerializer()
+
+    class Meta:
+        model = MentionPage
+        fields = '__all__'

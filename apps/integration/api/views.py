@@ -9,8 +9,10 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 
 from apps.integration.api.serializers import MainPageSerializer, ContactPageSerializer, EstimationPageSerializer, \
-    FranchisesSerializer, ArticleSerializer, BlogPageSerializer
-from apps.integration.models import MainPage, ContactPage, EstimationPage, Franchises, Article, BlogPage
+    FranchisesSerializer, ArticleSerializer, BlogPageSerializer, PoliticsPageSerializer, CookiesPageSerializer, \
+    MentionPageSerializer
+from apps.integration.models import MainPage, ContactPage, EstimationPage, Franchises, Article, BlogPage, PoliticsPage, \
+    MentionPage, CookiesPage
 
 
 class MainPageViewSet(viewsets.ReadOnlyModelViewSet):
@@ -158,3 +160,44 @@ class ArticleViewSet(viewsets.ReadOnlyModelViewSet):
 
         return queryset
 
+
+class PoliticsViewSet(viewsets.ModelViewSet):
+    queryset = PoliticsPage.objects.all()
+    serializer_class = PoliticsPageSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def list(self, request, *args, **kwargs):
+        instance = PoliticsPage.objects.all().order_by('-id').first()
+        if not instance:
+            return Response({'detail': 'Not found.'}, status=404)
+
+        serializer = PoliticsPageSerializer(instance)
+        return Response(serializer.data)
+
+
+class CookiesViewSet(viewsets.ModelViewSet):
+    queryset = CookiesPage.objects.all()
+    serializer_class = CookiesPageSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def list(self, request, *args, **kwargs):
+        instance = CookiesPage.objects.all().order_by('-id').first()
+        if not instance:
+            return Response({'detail': 'Not found.'}, status=404)
+
+        serializer = CookiesPageSerializer(instance)
+        return Response(serializer.data)
+
+
+class MentionViewSet(viewsets.ModelViewSet):
+    queryset = MentionPage.objects.all()
+    serializer_class = MentionPageSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def list(self, request, *args, **kwargs):
+        instance = MentionPage.objects.all().order_by('-id').first()
+        if not instance:
+            return Response({'detail': 'Not found.'}, status=404)
+
+        serializer = MentionPageSerializer(instance)
+        return Response(serializer.data)

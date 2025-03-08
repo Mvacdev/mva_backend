@@ -115,6 +115,9 @@ ADMIN_REORDER = (
         'integration.Franchises',
         'integration.Article',
         'integration.BlogPage',
+        'integration.PoliticsPage',
+        'integration.CookiesPage',
+        'integration.MentionPage',
      )},
 
     {'app': 'extra_settings',

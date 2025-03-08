@@ -287,6 +287,32 @@ class EstimationPage(InfoPage):
     pass
 
 
+class TitrePage(models.Model):
+    # ---- MetaInfo -----
+    seo_title = models.CharField(max_length=100, help_text='SEO Title', blank=True)
+    seo_description = models.CharField(max_length=500, help_text='SEO Description', blank=True)
+    # ***** BLOCKS ******
+    # ---- TitreSection -----
+    titre_section = models.OneToOneField(TitreSection, on_delete=models.SET_NULL, blank=True, null=True)
+    #  ---- Footer -----
+    footer = models.OneToOneField(Footer, on_delete=models.SET_NULL, blank=True, null=True)
+
+    class Meta:
+        abstract = True
+
+
+class PoliticsPage(TitrePage):
+    pass
+
+
+class CookiesPage(TitrePage):
+    pass
+
+
+class MentionPage(TitrePage):
+    pass
+
+
 class Franchises(InfoPage):
     why_need_franchise = models.OneToOneField(CardSection, on_delete=models.SET_NULL, blank=True, null=True)
     banner = models.OneToOneField(BannerSection, on_delete=models.SET_NULL, blank=True, null=True)

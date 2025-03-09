@@ -163,6 +163,8 @@ MIDDLEWARE = [
     'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True  # Allow all origins
+
 ROOT_URLCONF = 'mva_proj.urls'
 
 TEMPLATES = [
@@ -282,13 +284,14 @@ SITE_ID = 1
 AUTH_USER_MODEL = 'users.User'
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
 
-CORS_ORIGIN_ALLOW_ALL = False  # Allowing all origins is not recommended for production
+CORS_ORIGIN_ALLOW_ALL = True  # Allowing all origins is not recommended for production
 
 CORS_ORIGIN_WHITELIST = [
     'http://127.0.0.1:3000',
     'http://192.168.0.107:3000',
     'http://localhost:3000',
     'http://206.81.17.158:3000',
+    'http://206.81.17.158:8000',
     # Add more allowed origins as needed
 ]
 

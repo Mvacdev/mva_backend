@@ -474,11 +474,12 @@ CKEDITOR_5_CONFIGS = {
         },
         'imageUpload': {
             # Настроить серверный путь для загрузки изображений (зависит от вашего серверного окружения)
-            'url': '/upload/',  # Пример для Django
+            'url': 'media/upload/',  # Пример для Django
         }
     },
 }
-
+CKEDITOR_5_FILE_UPLOAD_PERMISSION = "staff"  # Possible values: "staff", "authenticated", "any"
+CKEDITOR_5_FILE_STORAGE = "mva_proj.storages.CustomStorage"  # optional
 
 # OAUTH2 Settings
 from oauth2_provider import settings as oauth2_settings

@@ -410,12 +410,40 @@ DJANGO_CELERY_RESULTS_TASK_ID_MAX_LENGTH = 191
 #         'extraPlugins': 'filebrowser',  # Убирает поддержку загрузки файлов
 #     },
 # }
+# CKEDITOR_5_CONFIGS = {
+#     'default': {
+#         'toolbar': {
+#             'items': [
+#                 'heading', '|', 'bold', 'italic', 'link',
+#                 'bulletedList', 'numberedList', 'blockQuote'
+#             ],
+#         },
+#         'heading': {
+#             'options': [
+#                 { 'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph' },
+#                 { 'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1' },
+#                 { 'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2' },
+#                 { 'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3' },
+#                 { 'model': 'heading4', 'view': 'h4', 'title': 'Heading 4', 'class': 'ck-heading_heading4' },
+#                 { 'model': 'heading5', 'view': 'h5', 'title': 'Heading 5', 'class': 'ck-heading_heading5' },
+#                 { 'model': 'heading6', 'view': 'h6', 'title': 'Heading 6', 'class': 'ck-heading_heading6' }
+#             ]
+#         },
+#         'list': {
+#             'properties': {
+#                 'styles': True,  # Разрешить стили списков
+#                 'startIndex': True,  # Разрешить указание индекса начала списка
+#                 'reversed': True,  # Разрешить реверс списка
+#             }
+#         }
+#     },
+# }
 CKEDITOR_5_CONFIGS = {
     'default': {
         'toolbar': {
             'items': [
                 'heading', '|', 'bold', 'italic', 'link',
-                'bulletedList', 'numberedList', 'blockQuote'
+                'bulletedList', 'numberedList', 'blockQuote', 'imageUpload'  # Добавляем imageUpload
             ],
         },
         'heading': {
@@ -435,10 +463,18 @@ CKEDITOR_5_CONFIGS = {
                 'startIndex': True,  # Разрешить указание индекса начала списка
                 'reversed': True,  # Разрешить реверс списка
             }
+        },
+        'image': {
+            'toolbar': [
+                'imageTextAlternative', '|', 'imageStyle:full', 'imageStyle:side', '|', 'resizeImage', '|', 'imageUpload'
+            ],
+        },
+        'imageUpload': {
+            # Настроить серверный путь для загрузки изображений (зависит от вашего серверного окружения)
+            'url': '/upload/',  # Пример для Django
         }
     },
 }
-
 
 
 # OAUTH2 Settings

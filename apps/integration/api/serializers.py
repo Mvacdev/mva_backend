@@ -1,6 +1,4 @@
 from rest_framework import serializers
-
-from rest_framework import serializers
 from apps.integration.models import (
     MainPage, MainScreenFeatureBlock, MainScreenFeature, MainSelect, MainSelectOption,
     CardSection, Card, PricingSection, PricingPlan, PricingFeature, BannerSection,

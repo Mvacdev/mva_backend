@@ -373,8 +373,8 @@ class FAQSectionAdmin(admin.ModelAdmin):
         seller_inline = SellerFAQItemInline(self.model, self.admin_site)
         alternative_inline = FAQAlternativeItemInline(self.model, self.admin_site)
 
-        customer_inline.verbose_name_plural = "FAQ for Customer"
-        seller_inline.verbose_name_plural = "FAQ for Seller"
+        customer_inline.verbose_name_plural = "FAQ for Seller"
+        seller_inline.verbose_name_plural = "FAQ for Customer"
 
         inlines.append(customer_inline)
         inlines.append(seller_inline)

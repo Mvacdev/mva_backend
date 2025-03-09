@@ -489,6 +489,22 @@ class Article(models.Model):
     #
     #     return toc
 
+    # def generate_toc(self, parsed_text):
+    #     soup = BeautifulSoup(parsed_text, 'html.parser')
+    #     sections = soup.find_all('section', class_='post__section')
+    #
+    #     toc = '<section class="post__toc">\n  <h2 class="post__toc-title">Plan de l’article</h2>\n  <ul class="post__toc-list">'
+    #
+    #     for section in sections:
+    #         section_id = section.get('id')
+    #         title_tag = section.find(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
+    #         if section_id and title_tag:
+    #             title = title_tag.get_text(strip=True)
+    #             toc += f'\n    <li class="post__toc-item">\n      <a href="#{section_id}">{title}</a>\n    </li>'
+    #
+    #     toc += '\n  </ul>\n</section>'
+    #
+    #     return toc
     def generate_toc(self, parsed_text):
         soup = BeautifulSoup(parsed_text, 'html.parser')
         sections = soup.find_all('section', class_='post__section')
@@ -497,10 +513,15 @@ class Article(models.Model):
 
         for section in sections:
             section_id = section.get('id')
-            title_tag = section.find(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
+
+            title_tag = section.find(['h2', 'h3'])
             if section_id and title_tag:
                 title = title_tag.get_text(strip=True)
-                toc += f'\n    <li class="post__toc-item">\n      <a href="#{section_id}">{title}</a>\n    </li>'
+                # Если это h3, добавим отступ в виде дополнительного <ul>
+                if title_tag.name == 'h3':
+                    toc += f'\n    <li class="post__toc-item" style="margin-left: 20px;">\n      <a href="#{section_id}">{title}</a>\n    </li>'
+                else:
+                    toc += f'\n    <li class="post__toc-item">\n      <a href="#{section_id}">{title}</a>\n    </li>'
 
         toc += '\n  </ul>\n</section>'
 

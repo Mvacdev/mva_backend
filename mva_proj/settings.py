@@ -474,7 +474,7 @@ CKEDITOR_5_CONFIGS = {
         },
         'imageUpload': {
             # Настроить серверный путь для загрузки изображений (зависит от вашего серверного окружения)
-            'url': '/public/media/upload/',  # Пример для Django
+            'url': '/upload/',  # Пример для Django
         }
     },
 }

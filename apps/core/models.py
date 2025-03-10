@@ -49,3 +49,32 @@ class DataHistory(TimeStampMixin, models.Model):
         #         name='unique_product_user_code'
         #     )
         # ]
+
+
+class PotentialFranchise(TimeStampMixin, models.Model):
+
+    class AvailableBudget(models.TextChoices):
+        entre_20000_et_35000 = 'entre_20000_et_35000', 'Entre 20 000 € et 35 000 €'
+        _35000_et_50000 = '_35000_et_50000', '35 000 € et 50 000 €'
+        plus_de_50000 = 'plus_de_50000', 'Plus de 50 000 €'
+
+    full_name = models.CharField(max_length=200, help_text='Nom complet *')
+    email = models.EmailField(max_length=200, help_text='Adresse email *')
+    phone = models.CharField(max_length=20, help_text='Numéro de téléphone *')
+    region = models.CharField(max_length=400, help_text='Ville et région souhaitées pour la franchise *')
+    experience = models.TextField(max_length=2000, help_text='Expérience professionnelle (secteurs pertinents) *')
+    budget = models.CharField(
+        max_length=30, choices=AvailableBudget.choices, help_text='Budget disponible pour l’investissement'
+    )
+    message = models.TextField(max_length=5000, help_text='Message (facultatif)', blank=True)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+    # def __str__(self):
+    #     return f"{self.auto_mark} {self.auto_model} ({self.auto_year}) - {self.firstname}"
+
+    class Meta:
+        verbose_name = 'Potential franchise'
+        verbose_name_plural = 'Potential franchises'
+        ordering = ['-id']

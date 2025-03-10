@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.core.models import DataHistory
+from apps.core.models import DataHistory, PotentialFranchise
 
 
 class DataHistorySerializer(serializers.ModelSerializer):
@@ -7,3 +7,8 @@ class DataHistorySerializer(serializers.ModelSerializer):
         model = DataHistory
         fields = '__all__'
 
+
+class PotentialFranchiseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PotentialFranchise
+        fields = '__all__'

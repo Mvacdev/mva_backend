@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
-from .models import DataHistory
+from .models import DataHistory, PotentialFranchise
 
 
 @admin.register(DataHistory)
@@ -37,3 +37,20 @@ class DataHistoryAdmin(admin.ModelAdmin):
 
     formatted_features.short_description = "features"
 
+
+@admin.register(PotentialFranchise)
+class PotentialFranchiseAdmin(admin.ModelAdmin):
+    list_display = (
+        "id", "full_name", "email", "phone", "region", "experience", "budget", "message", "created_at"
+    )
+    list_display_links = ["id", "full_name"]
+    list_filter = ("budget",)
+    search_fields = ("full_name", "email", "phone", "region")
+    ordering = ("-created_at",)
+    readonly_fields = ("created_at",)
+
+    fieldsets = (
+        ("General", {
+            "fields": ("full_name", "email", "phone", "region", "experience", "budget", "message", "created_at")
+        }),
+    )

@@ -68,12 +68,6 @@ class PotentialFranchise(TimeStampMixin, models.Model):
     )
     message = models.TextField(max_length=5000, help_text='Message (facultatif)', blank=True)
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-
-    # def __str__(self):
-    #     return f"{self.auto_mark} {self.auto_model} ({self.auto_year}) - {self.firstname}"
-
     class Meta:
         verbose_name = 'Potential franchise'
         verbose_name_plural = 'Potential franchises'

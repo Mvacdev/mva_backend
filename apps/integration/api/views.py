@@ -141,7 +141,7 @@ class ArticleViewSet(viewsets.ReadOnlyModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_class = ArticleFilter
 
-    search_fields = ['title', 'description', 'author']
+    search_fields = ['title']
 
     def get_queryset(self):
         blog_page = BlogPage.objects.order_by('-id').first()

@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.forms.models import BaseInlineFormSet
 from nested_admin.nested import NestedTabularInline, NestedModelAdmin
 
 from apps.integration.models import (
@@ -336,24 +337,64 @@ class YouTubeVideoAdmin(admin.ModelAdmin):
     list_display = ('feed', 'preview_image', 'title', 'views_info', 'video_link', 'duration')
 
 
+class CategorizedFAQItemFormSet(BaseInlineFormSet):
+    """Кастомный FormSet, который принимает категорию"""
+
+    def __init__(self, *args, **kwargs):
+        self.category = kwargs.pop('category', None)  # Достаем категорию
+        super().__init__(*args, **kwargs)
+
+    def save_new(self, form, commit=True):
+        obj = super().save_new(form, commit=False)
+        if self.category:
+            obj.category = self.category  # Присваиваем категорию
+        if commit:
+            obj.save()
+        return obj
+
+
 class CustomerFAQItemInline(admin.TabularInline):
     model = FAQItem
     extra = 0
     fields = ('question', 'answer')
+    formset = CategorizedFAQItemFormSet
 
     def get_queryset(self, request):
-        qs = super().get_queryset(request)
-        return qs.filter(category='customer')
+        """Фильтруем только Customer"""
+        return super().get_queryset(request).filter(category='customer')
+
+    def get_formset(self, request, obj=None, **kwargs):
+        """Передаем категорию"""
+        formset_class = super().get_formset(request, obj, **kwargs)
+
+        class WrappedFormSet(formset_class):
+            def __init__(self, *args, **formset_kwargs):
+                formset_kwargs['category'] = 'customer'
+                super().__init__(*args, **formset_kwargs)
+
+        return WrappedFormSet
 
 
 class SellerFAQItemInline(admin.TabularInline):
     model = FAQItem
     extra = 0
     fields = ('question', 'answer')
+    formset = CategorizedFAQItemFormSet
 
     def get_queryset(self, request):
-        qs = super().get_queryset(request)
-        return qs.filter(category='seller')
+        """Фильтруем только Seller"""
+        return super().get_queryset(request).filter(category='seller')
+
+    def get_formset(self, request, obj=None, **kwargs):
+        """Передаем категорию"""
+        formset_class = super().get_formset(request, obj, **kwargs)
+
+        class WrappedFormSet(formset_class):
+            def __init__(self, *args, **formset_kwargs):
+                formset_kwargs['category'] = 'seller'
+                super().__init__(*args, **formset_kwargs)
+
+        return WrappedFormSet
 
 
 class FAQAlternativeItemInline(admin.TabularInline):
@@ -381,6 +422,23 @@ class FAQSectionAdmin(admin.ModelAdmin):
         inlines.append(alternative_inline)
 
         return inlines
+
+    # def save_related(self, request, form, formsets, change):
+    #     """Автоматически устанавливаем правильную категорию перед сохранением"""
+    #     super().save_related(request, form, formsets, change)
+    #
+    #     for formset in formsets:
+    #         print('formset.model:', formset.model)  # Покажет, с какой моделью работает formset
+    #
+    #         for obj in formset.new_objects:  # Обрабатываем только новые объекты
+    #             if isinstance(obj, FAQItem):  # Проверяем, что это нужная модель
+    #                 print(type(formset))
+    #                 if isinstance(formset, CustomerFAQItemInline.formset):  # Проверяем, относится ли formset к CustomerFAQItemInline
+    #                     obj.category = "customer"
+    #                 elif isinstance(formset, SellerFAQItemInline.formset):  # Проверяем, относится ли formset к SellerFAQItemInline
+    #                     obj.category = "seller"
+    #                 obj.save()  # Сохраняем с правильной категорией
+
 
 # class FAQItemInline(admin.TabularInline):
 #     list_display = ('category', 'question', 'answer')

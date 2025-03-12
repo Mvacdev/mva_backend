@@ -62,9 +62,9 @@ class PotentialFranchise(TimeStampMixin, models.Model):
     email = models.EmailField(max_length=200, help_text='Adresse email *')
     phone = models.CharField(max_length=20, help_text='Numéro de téléphone *')
     region = models.CharField(max_length=400, help_text='Ville et région souhaitées pour la franchise *')
-    experience = models.TextField(max_length=2000, help_text='Expérience professionnelle (secteurs pertinents) *')
+    experience = models.TextField(max_length=2000, help_text='Expérience professionnelle (secteurs pertinents) *', blank=True, null=True)
     budget = models.CharField(
-        max_length=30, choices=AvailableBudget.choices, help_text='Budget disponible pour l’investissement'
+        max_length=30, choices=AvailableBudget.choices, help_text='Budget disponible pour l’investissement', blank=True, null=True
     )
     message = models.TextField(max_length=5000, help_text='Message (facultatif)', blank=True)
 

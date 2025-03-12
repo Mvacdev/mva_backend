@@ -338,16 +338,15 @@ class YouTubeVideoAdmin(admin.ModelAdmin):
 
 
 class CategorizedFAQItemFormSet(BaseInlineFormSet):
-    """Кастомный FormSet, который принимает категорию"""
 
     def __init__(self, *args, **kwargs):
-        self.category = kwargs.pop('category', None)  # Достаем категорию
+        self.category = kwargs.pop('category', None)
         super().__init__(*args, **kwargs)
 
     def save_new(self, form, commit=True):
         obj = super().save_new(form, commit=False)
         if self.category:
-            obj.category = self.category  # Присваиваем категорию
+            obj.category = self.category
         if commit:
             obj.save()
         return obj
@@ -360,11 +359,9 @@ class CustomerFAQItemInline(admin.TabularInline):
     formset = CategorizedFAQItemFormSet
 
     def get_queryset(self, request):
-        """Фильтруем только Customer"""
         return super().get_queryset(request).filter(category='customer')
 
     def get_formset(self, request, obj=None, **kwargs):
-        """Передаем категорию"""
         formset_class = super().get_formset(request, obj, **kwargs)
 
         class WrappedFormSet(formset_class):
@@ -382,11 +379,9 @@ class SellerFAQItemInline(admin.TabularInline):
     formset = CategorizedFAQItemFormSet
 
     def get_queryset(self, request):
-        """Фильтруем только Seller"""
         return super().get_queryset(request).filter(category='seller')
 
     def get_formset(self, request, obj=None, **kwargs):
-        """Передаем категорию"""
         formset_class = super().get_formset(request, obj, **kwargs)
 
         class WrappedFormSet(formset_class):

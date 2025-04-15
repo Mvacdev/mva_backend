@@ -292,6 +292,8 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://206.81.17.158:3000',
     'http://206.81.17.158:8000',
+    'https://vroommarket.fr',
+    'https://www.vroommarket.fr',
     # Add more allowed origins as needed
 ]
 

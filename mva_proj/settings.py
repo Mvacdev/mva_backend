@@ -300,6 +300,8 @@ CORS_ORIGIN_WHITELIST = [
 CSRF_TRUSTED_ORIGINS = [
     'https://vroommarket.fr',
     'https://www.vroommarket.fr',
+    'http://127.0.0.1:3000',
+    'http://206.81.17.158:3000',
 ]
 
 # Account settings

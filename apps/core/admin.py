@@ -41,16 +41,23 @@ class DataHistoryAdmin(admin.ModelAdmin):
 @admin.register(PotentialFranchise)
 class PotentialFranchiseAdmin(admin.ModelAdmin):
     list_display = (
-        "id", "full_name", "email", "phone", "region", "experience", "budget", "message", "created_at"
+        "id", "full_name", "email", "phone", "age", "city", "linkedin_link", "budget", "candidate_type", "score", "message", "created_at"
     )
-    list_display_links = ["id", "full_name"]
-    list_filter = ("budget",)
-    search_fields = ("full_name", "email", "phone", "region")
+    list_display_links = ["id", "full_name", "email"]
+    list_filter = ("budget", "experience_auto", "projet")
+    search_fields = ("full_name", "email", "phone", "city_for_franchise")
     ordering = ("-created_at",)
     readonly_fields = ("created_at",)
 
     fieldsets = (
-        ("General", {
-            "fields": ("full_name", "email", "phone", "region", "experience", "budget", "message", "created_at")
+        ("Main Info", {
+            "fields": (
+                "full_name", "email", "phone", "age", "city", "linkedin_link", "budget", "message", "score",
+                "candidate_type", "formtype"
+            )
+        }),
+        ("Motivation", {
+            "fields": ("projet", "experience_auto", "experience_commerciale", "experience_entrepreneur",
+                       "city_for_franchise", "engagement", "start_timing")
         }),
     )

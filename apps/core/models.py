@@ -52,7 +52,6 @@ class DataHistory(TimeStampMixin, models.Model):
 
 
 class PotentialFranchise(TimeStampMixin, models.Model):
-
     # class AvailableBudget(models.TextChoices):
     #     # entre_20000_et_35000 = 'entre_20000_et_35000', 'Entre 20 000 € et 35 000 €'
     #     # _35000_et_50000 = '_35000_et_50000', '35 000 € et 50 000 €'
@@ -60,15 +59,14 @@ class PotentialFranchise(TimeStampMixin, models.Model):
     #     moins_20000 = 'moins_20000', 'Moins 20000'
     #     entre_20000_49000 = 'entre_20000_49000', 'Entre 20000-49000'
     #     plus_50000 = 'plus_50000', 'Plus 50000'
-
-    full_name = models.CharField(max_length=200, help_text='Nom complet *')  # +
-    email = models.EmailField(max_length=200, help_text='Adresse email *')  # +
-    phone = models.CharField(max_length=20, help_text='Numéro de téléphone *')  # +
-    age = models.PositiveIntegerField(default=21)  # +
-    city = models.CharField(max_length=100)  # +
-    linkedin_link = models.CharField(max_length=300, blank=True)  # +
-    message = models.TextField(max_length=5000, help_text='Message (facultatif)', blank=True)  # +
-    projet = models.CharField(max_length=100, help_text='Quel est votre projet ?')  # +
+    full_name = models.CharField(max_length=200, help_text='Nom complet *')
+    email = models.EmailField(max_length=200, help_text='Adresse email *')
+    phone = models.CharField(max_length=200, help_text='Numéro de téléphone *')
+    age = models.PositiveIntegerField(default=21)
+    city = models.CharField(max_length=100)
+    linkedin_link = models.CharField(max_length=300, blank=True)
+    message = models.TextField(max_length=5000, help_text='Message (facultatif)', blank=True)
+    projet = models.CharField(max_length=100, help_text='Quel est votre projet ?')
     experience_auto = models.CharField(max_length=100, help_text='Avez-vous une expérience dans le secteur automobile ? *', blank=True, null=True)  # +
     experience_commerciale = models.CharField(max_length=100, help_text='Avez-vous une expérience commerciale ?')
     experience_entrepreneur = models.CharField(max_length=100, help_text='Êtes-vous déjà entrepreneur ou indépendant ?')
@@ -83,4 +81,18 @@ class PotentialFranchise(TimeStampMixin, models.Model):
     class Meta:
         verbose_name = 'Potential franchise'
         verbose_name_plural = 'Potential franchises'
+        ordering = ['-id']
+
+
+class Contact(TimeStampMixin, models.Model):
+    full_name = models.CharField(max_length=200, help_text='Nom complet *')
+    email = models.EmailField(max_length=200, help_text='Adresse email *')
+    telephone = models.CharField(max_length=200, help_text='Numéro de téléphone *')
+    purpose = models.CharField(max_length=300)
+    message = models.TextField(max_length=5000, blank=True)
+    formtype = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name = 'Contact'
+        verbose_name_plural = 'Contacts'
         ordering = ['-id']

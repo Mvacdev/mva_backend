@@ -9,7 +9,7 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .serializers import DataHistorySerializer, PotentialFranchiseSerializer
+from .serializers import DataHistorySerializer, PotentialFranchiseSerializer, ContactSerializer
 
 
 class DataHistoryAPIView(APIView):
@@ -28,6 +28,17 @@ class PotentialFranchiseAPIView(APIView):
 
     def post(self, request):
         serializer = PotentialFranchiseSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ContactAPIView(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def post(self, request):
+        serializer = ContactSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

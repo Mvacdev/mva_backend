@@ -103,6 +103,7 @@ ADMIN_REORDER = (
      'models': (
          'core.DataHistory',
          'core.PotentialFranchise',
+         'core.Contact',
      )},
 
     # integration

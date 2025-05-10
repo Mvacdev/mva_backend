@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
-from .models import DataHistory, PotentialFranchise
+from .models import DataHistory, PotentialFranchise, Contact
 
 
 @admin.register(DataHistory)
@@ -61,3 +61,31 @@ class PotentialFranchiseAdmin(admin.ModelAdmin):
                        "city_for_franchise", "engagement", "start_timing")
         }),
     )
+
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = (
+        "id", "full_name", "email", "telephone", "purpose", "message", "formtype", "created_at"
+    )
+    list_display_links = ["id", "full_name", "email"]
+    list_filter = ("formtype",)
+    search_fields = ("full_name", "email", "telephone")
+    ordering = ("-created_at",)
+    readonly_fields = ("created_at",)
+
+    fieldsets = (
+        ("Main Info", {
+            "fields": (
+                "full_name", "email", "telephone", "purpose", "message", "formtype"
+            )
+        }),
+    )
+
+
+# full_name = models.CharField(max_length=200, help_text='Nom complet *')
+# email = models.EmailField(max_length=200, help_text='Adresse email *')
+# telephone = models.CharField(max_length=200, help_text='Numéro de téléphone *')
+# purpose = models.CharField(max_length=300)
+# message = models.TextField(max_length=5000, blank=True)
+# formtype = models.CharField(max_length=100)

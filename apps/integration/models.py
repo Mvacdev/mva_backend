@@ -231,6 +231,8 @@ class MainPage(models.Model):
     video_url = models.URLField(help_text='Video URL', blank=True)
     video_text = models.CharField(max_length=255, help_text='Video text', blank=True)
     video_preview = models.ImageField(upload_to='main_page/video_previews/', help_text='Video preview img', blank=True, null=True)
+    instagram_url = models.URLField(max_length=255, blank=True)
+    youtube_url = models.URLField(max_length=255, blank=True)
     # ***** BLOCKS ******
     main_screen_feature_block = models.OneToOneField(MainScreenFeatureBlock, on_delete=models.SET_NULL, blank=True, null=True)
     main_screen_select = models.OneToOneField(MainSelect, on_delete=models.SET_NULL, blank=True, null=True)

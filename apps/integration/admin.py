@@ -24,7 +24,7 @@ class MainPageAdmin(admin.ModelAdmin):
             'seo_title', 'seo_description',
         )}),
         ('Main Screen Section', {'fields': (
-            'background_image', 'rating', 'title', 'video_url', 'video_text', 'video_preview',
+            'instagram_url', 'youtube_url', 'background_image', 'rating', 'title', 'video_url', 'video_text', 'video_preview'
         )}),
         ('Blocks', {'fields': (
             'main_screen_feature_block', 'main_screen_select', 'marketing_section', 'feature_section', 'steps_section',

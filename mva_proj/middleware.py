@@ -19,8 +19,7 @@ class PrerenderMiddleware:
             try:
                 response = requests.get(prerender_url, timeout=5)
                 return HttpResponse(response.content, content_type="text/html")
-            except Exception as e:
-                print('ERRROOORRR', e)
+            except:
                 pass
 
         return self.get_response(request)

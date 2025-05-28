@@ -149,7 +149,7 @@ ADMIN_REORDER = (
 )
 
 MIDDLEWARE = [
-    'mva_proj.middleware.PrerenderMiddleware',
+    # 'mva_proj.middleware.PrerenderMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'admin_reorder.middleware.ModelAdminReorder',
